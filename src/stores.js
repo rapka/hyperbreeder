@@ -5,6 +5,7 @@ export const pauseStatus = writable(true);
 export const debugMultiplier = writable(1);
 
 export const mainCounter = writable(1000);
+export const energyCounter = writable(0);
 export const controlRods = writable([false, true]);
 
 export let e = writable(1.03); // Fast Fission Factor https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/fast-fission-factor/

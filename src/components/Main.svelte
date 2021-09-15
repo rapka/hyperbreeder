@@ -28,7 +28,7 @@
 <script>
 	import Loop from './logic/Loop.svelte';
 	import PauseButton from './PauseButton.svelte';
-	import { mainCounter, p, n, e, f, pf, pt, controlRods } from '../stores';
+	import { mainCounter, energyCounter, p, n, e, f, pf, pt, controlRods } from '../stores';
 
 	let name = 'world';
 </script>
@@ -38,7 +38,7 @@
 
 <section class="panel panel-1">
 	<h1>Hello {name}!</h1>
-	<p>Counter: {$mainCounter}</p>
+	<p>Counter: {$mainCounter} {$energyCounter}</p>
 </section>
 
 <section class="panel panel-2">

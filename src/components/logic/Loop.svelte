@@ -1,6 +1,6 @@
 
 <script>
-	import { mainCounter, n, e, f, p, pt, pf, pauseStatus } from '../../stores';
+	import { mainCounter, energyCounter, n, e, f, p, pt, pf, pauseStatus } from '../../stores';
 	import times from 'lodash/times';
 	import rbinom from './rbinom';
 
@@ -52,9 +52,14 @@
 			neutrons = simulateFastLeakage(neutrons);
 			neutrons = simulateResonanceEscape(neutrons);
 			neutrons = simulateThermalLeakage(neutrons);
-			neutrons = simulateThermalUtilization(neutrons);
+
+			const utilized = simulateThermalUtilization(neutrons);
+
+			energyCounter.update(energy => energy + (neutrons - utilized));
+
+			neutrons = utilized;
 			neutrons = simulateReproduction(neutrons);
-			return neutrons;
+			return parseInt(neutrons);
 		});
 	}
 
