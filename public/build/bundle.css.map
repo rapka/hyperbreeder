@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "Main.svelte",
+    "PauseButton.svelte"
+  ],
+  "sourcesContent": [
+    "<svelte:head>\n  <!-- Google Font -->\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n  <link rel=\"preload\" href=\"../public/MajorMonoDisplay-Regular.ttf\" as=\"font\"\n      type=\"font/ttf\" crossorigin=\"anonymous\">\n</svelte:head>\n<style>@font-face {\n  font-family: 'majormono';\n  src: url(\"../../public/MajorMonoDisplay-Regular.ttf\") format(\"truetype\"); }\n\n@font-face {\n  font-family: 'majormono';\n  src: url(\"../../public/MajorMonoDisplay-Regular.ttf\") format(\"truetype\"); }\n\n:global(html) {\n  font-family: 'majormono'; }\n\np {\n  font-family: 'majormono';\n  color: white;\n  background: black;\n  font-size: 2em; }\n\n.panel-1 {\n  font-family: 'majormono';\n  background: linear-gradient(80deg, #D21034, #FFCE00, #006A4E); }\n\n/*# sourceMappingURL=Main.svelte.css.map */</style>\n\n<script>\n\timport Loop from './logic/Loop.svelte';\n\timport PauseButton from './PauseButton.svelte';\n\timport { mainCounter, p, n, e, f, pf, pt, controlRods } from '../stores';\n\n\tlet name = 'world';\n</script>\n\n<Loop />\n<PauseButton />\n\n<section class=\"panel panel-1\">\n\t<h1>Hello {name}!</h1>\n\t<p>Counter: {$mainCounter}</p>\n</section>\n\n<section class=\"panel panel-2\">\n\t<p>Control Rods</p>\n\t<p>Reproduction factor: {$controlRods}</p>\n</section>",
+    "<style>@font-face {\n  font-family: 'majormono';\n  src: url(\"../../public/MajorMonoDisplay-Regular.ttf\") format(\"truetype\"); }\n\n.pauseButton {\n  background: #006A4E; }\n\n.paused {\n  background: #D21034; }\n\n/*# sourceMappingURL=PauseButton.svelte.css.map */</style>\n\n<script>\n\timport classNames from 'classnames';\n\timport { pauseStatus } from '../stores';\n\n\tconst pause = () => {\n\t\tpauseStatus.update(paused => !paused);\n\t};\n</script>\n\n<section class={classNames('pauseButton', { paused: $pauseStatus })} >\n\t<h1 on:click={pause}>{$pauseStatus ? \"Start reactor\" : \"Turn off reactor\"}</h1>\n</section>\n"
+  ],
+  "names": [],
+  "mappings": "AAMO,UAAU,AAAC,CAAC,AACjB,WAAW,CAAE,WAAW,CACxB,GAAG,CAAE,IAAI,2CAA2C,CAAC,CAAC,OAAO,UAAU,CAAC,AAAE,CAAC,AAE7E,UAAU,AAAC,CAAC,AACV,WAAW,CAAE,WAAW,CACxB,GAAG,CAAE,IAAI,2CAA2C,CAAC,CAAC,OAAO,UAAU,CAAC,AAAE,CAAC,AAErE,IAAI,AAAE,CAAC,AACb,WAAW,CAAE,WAAW,AAAE,CAAC,AAE7B,CAAC,cAAC,CAAC,AACD,WAAW,CAAE,WAAW,CACxB,KAAK,CAAE,KAAK,CACZ,UAAU,CAAE,KAAK,CACjB,SAAS,CAAE,GAAG,AAAE,CAAC,AAEnB,QAAQ,cAAC,CAAC,AACR,WAAW,CAAE,WAAW,CACxB,UAAU,CAAE,gBAAgB,KAAK,CAAC,CAAC,OAAO,CAAC,CAAC,OAAO,CAAC,CAAC,OAAO,CAAC,AAAE,CAAC;ACzB3D,UAAU,AAAC,CAAC,AACjB,WAAW,CAAE,WAAW,CACxB,GAAG,CAAE,IAAI,2CAA2C,CAAC,CAAC,OAAO,UAAU,CAAC,AAAE,CAAC,AAE7E,YAAY,eAAC,CAAC,AACZ,UAAU,CAAE,OAAO,AAAE,CAAC,AAExB,OAAO,eAAC,CAAC,AACP,UAAU,CAAE,OAAO,AAAE,CAAC"
+}
