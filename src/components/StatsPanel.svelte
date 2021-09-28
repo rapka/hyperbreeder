@@ -1,36 +1,30 @@
 <style>
 	@import '../vars';
 
-	:global(html) {
-		font-family: 'majormono';
-	}
-
-	p {
-		font-family: 'majormono';
-		color: white;
-		background: black;
-		font-size: 2em;
-	}
-
-	.panel-1 {
-		font-family: 'majormono';
+	.statsPanel {
+		font-family: 'xanh';
+		text-transform: uppercase;
 		background: linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen);
+		padding: 4px;
+		border-radius: 8px;
+		min-width: 300px;
 	}
 
 </style>
 
 <script>
-	import Loop from './logic/Loop.svelte';
-	import PauseButton from './PauseButton.svelte';
-	import { p, n, e, f, pf, pt, controlRods } from '../stores';
+	import { gameStatus, controlRods } from '../stores';
+
+	console.log('wut', gameStatus);
+	console.log('wut', $gameStatus);
 </script>
 
-<section class="panel panel-2">
-	<p>Resonance Escape Probability: {$p}</p>
-	<p>Reproduction factor: {$n}</p>
-	<p>Fast Fission Factor: {$e}</p>
-	<p>Thermal Utilization Factor: {$f}</p>
-	<p>Fast Non-leakage Probability: {$pf}</p>
-	<p>Thermal Non-leakage Probability: {$pt}</p>
+<section class="statsPanel">
+	<div>Resonance Escape Probability: {$gameStatus.p}</div>
+	<div>Reproduction factor: {$gameStatus.n}</div>
+	<div>Fast Fission Factor: {$gameStatus.e}</div>
+	<div>Thermal Utilization Factor: {$gameStatus.f}</div>
+	<div>Fast Non-leakage Probability: {$gameStatus.pf}</div>
+	<div>Thermal Non-leakage Probability: {$gameStatus.pt}</div>
 </section>
 

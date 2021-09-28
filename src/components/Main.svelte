@@ -1,14 +1,19 @@
 <svelte:head>
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="../public/MajorMonoDisplay-Regular.ttf" as="font"
+      type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="../public/XanhMono-Regular.ttf" as="font"
       type="font/ttf" crossorigin="anonymous">
 </svelte:head>
 <style>
 	@import '../vars';
 
 	:global(html) {
-		font-family: 'majormono';
+		font-family: 'xanh';
+		letter-spacing: 1px;
+	}
+
+	:global(body) {
+		margin: 0 !important;
 	}
 
 	p {
@@ -18,30 +23,56 @@
 		font-size: 2em;
 	}
 
-	.panel-1 {
+	#main-container {
 		font-family: 'majormono';
 		background: linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen);
+		display: flex;
+		flex-direction: row;
+	}
+
+	#left-column {
+		flex: 0 0;
+		padding: 20px;
+	}
+
+	#right-column {
+		flex: 1 1;
 	}
 
 </style>
 
 <script>
 	import Loop from './logic/Loop.svelte';
-	import PauseButton from './PauseButton.svelte';
-	import { mainCounter, energyCounter, p, n, e, f, pf, pt, controlRods } from '../stores';
+	import NeutronDisplay from './NeutronDisplay.svelte';
+	import NeutronCounter from './NeutronCounter.svelte';
+	import UpgradeList from './UpgradeList.svelte';
+	import Sidebar from './Sidebar.svelte';
+	import TabSelector from './TabSelector.svelte';
 
-	let name = 'world';
+	let selectedTab = 'MAIN';
+	let changeTab = (newTab, x, xx, xxx) => {
+		console.log('inn', newTab, x, xx, xxx);
+		selectedTab = newTab;
+	};
+
+	console.log('afm', selectedTab);
+
 </script>
 
-<Loop />
-<PauseButton />
-
-<section class="panel panel-1">
-	<h1>Hello {name}!</h1>
-	<p>Counter: {$mainCounter} {$energyCounter}</p>
-</section>
-
-<section class="panel panel-2">
-	<p>Control Rods</p>
-	<p>Reproduction factor: {$controlRods}</p>
-</section>
+<div id="main-container">
+	<Loop />
+	<div id="left-column">
+		<Sidebar />
+  </div>
+  <div id="right-column">
+  	<NeutronCounter />
+  	<TabSelector
+  		tabData={['MAIN', 'UPGRADES', 'RESEARCH']}
+  		selectedTab={selectedTab}
+  		onClick={changeTab}
+  	/>
+    {#if selectedTab === 'MAIN'}<NeutronDisplay />
+    {:else if selectedTab === 'UPGRADES'}<UpgradeList />
+    {/if}
+  </div>
+</div>

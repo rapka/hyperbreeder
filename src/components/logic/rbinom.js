@@ -13,4 +13,4 @@ const rbinom = (n, p = 0.5) => {
     return total;
 };
 
-export default rbinom
+export default rbinom;
