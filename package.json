@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "hyperbreeder",
+  "version": "0.0.1",
+  "description": "A nu",
   "main": "electron.js",
   "scripts": {
     "start": "run-p -n -l svelte:dev svelte:start",
@@ -9,6 +9,7 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint src",
+    "build": "npm run svelte:build",
     "svelte:build": "rollup -c",
     "svelte:dev": "rollup -c -w --dev",
     "svelte:start": "electron electron.js"
