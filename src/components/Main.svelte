@@ -1,7 +1,7 @@
 <svelte:head>
-  <link rel="preload" href="../public/MajorMonoDisplay-Regular.ttf" as="font"
+  <link rel="preload" href="./MajorMonoDisplay-Regular.ttf" as="font"
       type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="../public/XanhMono-Regular.ttf" as="font"
+  <link rel="preload" href="./XanhMono-Regular.ttf" as="font"
       type="font/ttf" crossorigin="anonymous">
 </svelte:head>
 <style>
