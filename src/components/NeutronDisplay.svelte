@@ -33,7 +33,7 @@
   <div class="graphContainer">
 	<svg
 		class="viz"
-	  viewBox="0 0 400 400"
+	  viewBox="0 0 800 400"
 	>
     {#each $counterHistory as historyEntry, index}
     	{#if index !== $counterHistory.length - 1}
