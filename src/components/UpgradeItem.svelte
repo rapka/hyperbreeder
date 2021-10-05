@@ -2,7 +2,7 @@
 	@import '../vars';
 
 	.upgradeItem {
-		font-family: 'majormono';
+		font-family: 'xanh';
 		background: linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen);
 		padding: 4px;
 		border-radius: 8px;
@@ -11,6 +11,8 @@
 		margin:  4px;
 		opacity: 0.5;
 		color:  white;
+		position: relative;
+		overflow: hidden;
 	}
 
 	.isAfforable {
@@ -20,7 +22,7 @@
 	}
 
 	.purchased {
-		opacity: 0.5;
+		cursor: default;
 	}
 
 	.upgradeItem-title {
@@ -34,6 +36,21 @@
 	.upgradeItem-lore {
 		font-size: 12px;
 		opacity: 0.5;
+	}
+
+	.upgradeItem-purchased {
+		z-index: 1;
+		background: rgba(0, 0, 0, 0.9);
+		opacity: 0.75;
+		width: 100%;
+		padding: 100px;
+		transform: rotate(-5deg);
+		top: -130px;
+		left: -20px;
+		text-transform: uppercase;
+		position: absolute;
+		font-size: 50px;
+		letter-spacing: 20px;
 	}
 </style>
 
@@ -59,7 +76,7 @@
 		isAfforable = map(cost, (c, key) => $resources[key] && $resources[key] >= c)
 			.reduce((sum, next) => sum && next, true);
 
-		className = classNames('upgradeItem', { purchased, isAfforable });
+		className = classNames('upgradeItem', { isAfforable, purchased });
 		clickHandler = () => {
 			(isAfforable && !purchased) ? onClick() : null;
 		}
@@ -70,5 +87,8 @@
 	<div class="upgradeItem-title">{title}</div>
 	<div class="upgradeItem-desc">{description}</div>
 	<div class="upgradeItem-lore">{lore}</div>
+	{#if purchased}
+		<div class="upgradeItem-purchased">Purchased</div>
+	{/if}
 </div>
 

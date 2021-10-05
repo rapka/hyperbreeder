@@ -12,7 +12,6 @@
 	import set from 'lodash/set';
 	import rbinom from './rbinom';
 
-	let name = 'world';
 	const MAX_HISTORY = 30;
 
 	const loop = () => {
