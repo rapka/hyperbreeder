@@ -19,7 +19,10 @@ const upgrades = [
 		description: 'test desc2',
 		lore: 'test lore2',
 		requirements: [],
-		apply: save => save,
+		apply: save => {
+			save.pf += .01;
+			return save;
+		},
 		cost: {
 			energy: 200,
 		},

@@ -4,6 +4,8 @@
 		padding: 4px;
 		border-radius: 8px;
 		margin: 8px 0;
+		border: 1px solid white;
+		color:  white;
 		cursor: pointer;
 		user-select: none;
 	}
@@ -33,5 +35,5 @@
 </script>
 
 <section class={classNames('pauseButton', { paused: $pauseStatus })} on:click={pause} >
-	<h1 >{text}</h1>
+	<h1>{text}</h1>
 </section>

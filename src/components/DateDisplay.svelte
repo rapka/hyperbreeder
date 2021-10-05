@@ -1,0 +1,42 @@
+<style>
+	@import '../vars';
+
+	.date-display {
+
+	}
+
+	.date-year {
+		padding: 4px;
+		display: inline-block;
+	}
+
+	.date-month {
+		color: red;
+	}
+</style>
+
+<script>
+	import getYear from 'date-fns/getYear';
+	import addHours from 'date-fns/addHours';
+	import format from 'date-fns/format';
+	import { gameStatus } from '../stores';
+
+	const startDate = new Date(2050, 1, 1);
+	let currentDate;
+
+	$: {
+		currentDate = addHours(startDate, $gameStatus.tickCount * 12)
+	}
+</script>
+
+<div class="date-display">
+  <span class="panel-label">
+  	Date:
+  </span>
+  <span class="date-year">
+		{getYear(currentDate)}
+	</span>
+	<span class="date-month">
+		{format(currentDate, 'MMM')}
+	</span>
+</div>

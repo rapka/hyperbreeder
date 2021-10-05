@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash/cloneDeep';
 import { writable, derived } from 'svelte/store';
 import upgrades from './data/upgrades';
 import forEach from 'lodash/forEach';
@@ -15,7 +16,6 @@ export const resources = writable({
 
 export const counterHistory = writable([0]);
 
-
 export const controlRods = writable([false, true]);
 
 const DEFAULT_VALUES = {
@@ -25,6 +25,9 @@ const DEFAULT_VALUES = {
 	p: 0.75, // Resonance Escape Probability https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/resonance-escape-probability/
 	pt: 0.96,
 	pf: 0.95,
+	tickCount: 0,
+	maxNeutrons: 2000,
+	maxEnergy: 10000,
 };
 
 export let saveGame = writable(DEFAULT_VALUES);
@@ -42,21 +45,19 @@ export const startupTime = writable(20); // Reactor startup time in ticks
 export const startupAmount = writable(1000); // Total neutrons to feed during startup
 export const startupTimer = writable(0); // Reactor startup time in ticks
 
-export const maxNeutrons = writable(2000);
-
-
 export const upgradeStatus = writable(upgrades);
 
 export const gameStatus = derived(
 	[upgradeStatus, saveGame],
 	([$upgradeStatus, $saveGame]) => {
+		let clonedSave = cloneDeep($saveGame);
 		forEach($upgradeStatus, upgrade => {
 			if (upgrade.purchased) {
-				$saveGame = upgrade.apply($saveGame);
+				clonedSave = upgrade.apply(clonedSave);
 			}
 		})
 
-		return $saveGame;
+		return clonedSave;
 	},
 );
 

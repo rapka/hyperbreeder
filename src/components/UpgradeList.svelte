@@ -5,7 +5,6 @@
 		font-family: 'majormono';
 		background: rgba(0, 0, 0, 0.75);
 		padding: 4px;
-		border-radius: 8px;
 		min-width: 300px;
 		color: white;
 	}
@@ -23,22 +22,20 @@
 	const buyUpgrade = (upgradeObject, index) => {
 		upgradeObject.purchased = true;
 
+		// Update purchase status
 		upgradeStatus.update(statusObject => {
-			console.log('statusObject', statusObject);
 			statusObject[index] = upgradeObject;
-			console.log('statusObject2', statusObject);
 			return statusObject;
 		});
 
+		// Subtract cost
 		resources.update(resourcesObj => {
-			console.log('resourcesObj', resourcesObj);
 			forEach(resourcesObj, (resource, key) => {
 				if (upgradeObject.cost[key]) {
 					resourcesObj[key] -= upgradeObject.cost[key];
 				}
 			});
 
-			console.log('resourcesObj2', resourcesObj);
 			return resourcesObj;
 		});
 	};

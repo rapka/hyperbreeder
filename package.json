@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
+    "date-fns": "^2.24.0",
     "lodash": "^4.17.21",
     "react-redux": "^7.2.1",
     "svelte": "^3.24.1",

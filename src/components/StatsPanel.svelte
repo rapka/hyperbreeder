@@ -4,19 +4,16 @@
 	.statsPanel {
 		font-family: 'xanh';
 		text-transform: uppercase;
-		background: linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen);
+		background: rgba(255, 255, 255, 0.7);
 		padding: 4px;
-		border-radius: 8px;
+		border: 1px solid $togoPink;
 		min-width: 300px;
+		/*color: white;*/
 	}
-
 </style>
 
 <script>
 	import { gameStatus, controlRods } from '../stores';
-
-	console.log('wut', gameStatus);
-	console.log('wut', $gameStatus);
 </script>
 
 <section class="statsPanel">

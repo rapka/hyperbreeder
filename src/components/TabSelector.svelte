@@ -1,7 +1,6 @@
 <style>
 	.tabSelector {
 		background: $togoGreen;
-		margin: 4px 4px 0 4px;
 		border-radius: 8px;
 		user-select: none;
 		display: flex;
@@ -10,11 +9,15 @@
 
 	.tab {
 		display: inline-block;
-		background: $togoRed;
+		background: linear-gradient(45deg, $togoBlue, $togoBlue, $togoPink);
 		padding: 8px;
 		flex: 1 0;
 		border: 1px solid white;
+		color: white;
+		text-shadow: 1px 1px 5px white;
 		cursor: pointer;
+		font-size: 18px;
+		text-transform: uppercase;
 	}
 
 	.selected {
@@ -30,8 +33,6 @@
 	export let tabData = [];
 	export let selectedTab = 'MAIN';
 	export let onClick = () => {};
-
-	console.log('aaa', selectedTab);
 </script>
 
 <div class="tabSelector">

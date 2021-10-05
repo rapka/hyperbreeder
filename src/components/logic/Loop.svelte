@@ -5,6 +5,7 @@
 		gameStatus,
 		counterHistory,
 		pauseStatus,
+		saveGame,
 		startupTime, startupAmount, startupTimer,
 	} from '../../stores';
 	import times from 'lodash/times';
@@ -16,9 +17,6 @@
 
 	const loop = () => {
 		setTimeout(loop, 500);
-
-		// n = 2.04;
-		// f = 0.75;
 
 		const simulateFastFission = (neutrons, factor) => {
 			return neutrons * $gameStatus.e;
@@ -50,9 +48,11 @@
 			if ($pauseStatus) {
 				return resourcesObj;
 			} else if ($startupTimer < $startupTime) {
-				neutrons += $startupAmount / $startupTime;
+				neutrons += ($startupAmount / $startupTime);
 				startupTimer.update(timer => timer + 1);
 			}
+
+			saveGame.update(o => set(o, 'tickCount', o.tickCount + 1));
 
 			neutrons = simulateFastFission(neutrons);
 			neutrons = simulateFastLeakage(neutrons);
@@ -61,10 +61,21 @@
 
 			const utilized = simulateThermalUtilization(neutrons);
 
-			resources.update(o => set(o, 'energy', o.energy + (neutrons - utilized)));
+			resourcesObj.energy += neutrons - utilized;
 
 			neutrons = utilized;
 			neutrons = parseInt(simulateReproduction(neutrons));
+
+			// MELTDOWN
+			if (neutrons > $gameStatus.maxNeutrons) {
+				$pauseStatus = true;
+
+				resourcesObj.energy = parseInt(resourcesObj.powerLevel / 2);
+				resourcesObj.powerLevel = 0;
+				neutrons = 0;
+			} else {
+				resourcesObj.powerLevel = neutrons;
+			}
 
 			counterHistory.update(history => {
 				history.push(neutrons);
@@ -76,7 +87,6 @@
 				return history;
 			});
 
-			resourcesObj.powerLevel = neutrons;
 			return resourcesObj;
 		});
 	}

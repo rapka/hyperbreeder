@@ -56,13 +56,13 @@
 	let clickHandler;
 
 	$: {
+		isAfforable = map(cost, (c, key) => $resources[key] && $resources[key] >= c)
+			.reduce((sum, next) => sum && next, true);
+
 		className = classNames('upgradeItem', { purchased, isAfforable });
 		clickHandler = () => {
 			(isAfforable && !purchased) ? onClick() : null;
 		}
-
-		isAfforable = map(cost, (c, key) => $resources[key] && $resources[key] >= c)
-			.reduce((sum, next) => sum && next, true);
 	}
 </script>
 

@@ -3,6 +3,8 @@
 		background: $togoGreen;
 		padding: 4px;
 		border-radius: 8px;
+		border: 1px solid white;
+		color: white;
 		margin: 8px 0;
 		cursor: pointer;
 		user-select: none;
