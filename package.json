@@ -1,10 +1,10 @@
 {
   "name": "hyperbreeder",
   "version": "0.0.1",
-  "description": "A nu",
+  "description": "A nuclear themed idle game",
   "main": "electron.js",
   "scripts": {
-    "start": "run-p -n -l svelte:dev svelte:start",
+    "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
@@ -12,12 +12,18 @@
     "build": "npm run svelte:build",
     "svelte:build": "rollup -c",
     "svelte:dev": "rollup -c -w --dev",
-    "svelte:start": "electron electron.js"
+    "svelte:start": "electron electron.js",
+    "gh-pages": "git subtree push --prefix public origin gh-pages"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "electron": "^10.1.0",
@@ -34,9 +40,37 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "date-fns": "^2.24.0",
+    "electron-squirrel-startup": "^1.0.0",
     "lodash": "^4.17.21",
     "react-redux": "^7.2.1",
     "svelte": "^3.24.1",
     "svelte-routing": "^1.4.2"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "hyperbreeder"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
