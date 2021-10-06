@@ -4,7 +4,7 @@
   "description": "A nuclear themed idle game",
   "main": "electron.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "run-p -n -l svelte:dev svelte:start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",

@@ -16,13 +16,6 @@
 		margin: 0 !important;
 	}
 
-	p {
-		font-family: 'majormono';
-		color: white;
-		background: black;
-		font-size: 2em;
-	}
-
 	#main-container {
 		font-family: 'majormono';
 		background: linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen);
