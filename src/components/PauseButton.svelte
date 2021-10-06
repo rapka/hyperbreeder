@@ -1,6 +1,6 @@
 <style>
 	.pauseButton {
-		background: $togoGreen;
+		background: $togoRed;
 		padding: 4px;
 		border-radius: 8px;
 		margin: 8px 0;
@@ -11,7 +11,7 @@
 	}
 
 	.paused {
-		background: $togoRed;
+		background: $togoGreen;
 	}
 </style>
 

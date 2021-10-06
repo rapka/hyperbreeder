@@ -1,26 +1,11 @@
-<svelte:head>
-  <link rel="preload" href="./MajorMonoDisplay-Regular.ttf" as="font"
-      type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="./XanhMono-Regular.ttf" as="font"
-      type="font/ttf" crossorigin="anonymous">
-</svelte:head>
 <style>
-	@import '../vars';
-
-	:global(html) {
-		font-family: 'xanh';
-		letter-spacing: 1px;
-	}
-
-	:global(body) {
-		margin: 0 !important;
-	}
-
-	#main-container {
+	#game-container {
 		font-family: 'majormono';
 		background: linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen);
 		display: flex;
 		flex-direction: row;
+		height: 100vh;
+		width: 100vw;
 	}
 
 	#left-column {
@@ -32,7 +17,6 @@
 		flex: 1 1;
 		margin: 4px;
 	}
-
 </style>
 
 <script>
@@ -51,7 +35,7 @@
 	};
 </script>
 
-<div id="main-container">
+<div id="game-container">
 	<Loop />
 	<div id="left-column">
 		<Sidebar />

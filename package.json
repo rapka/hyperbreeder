@@ -13,7 +13,7 @@
     "svelte:build": "rollup -c",
     "svelte:dev": "rollup -c -w --dev",
     "svelte:start": "electron electron.js",
-    "gh-pages": "git subtree push --prefix public origin gh-pages"
+    "gh-pages": "npm run build && git subtree push --prefix public origin gh-pages"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "author": "GitHub",

@@ -62,5 +62,6 @@ export const gameStatus = derived(
 );
 
 
-const kInf = derived([n, e, p, f], ([$n, $e, $p, $f]) => $n * $e * $p * $f);
-const kEff = derived([pf, pt], ([$pf, $pt]) => $pf * $pt);
+export const kInf = derived([gameStatus], ([$gameStatus]) =>
+	$gameStatus.pf * $gameStatus.pt * $gameStatus.e * $gameStatus.n * $gameStatus.f * $gameStatus.p);
+export const kEff = derived([gameStatus], ([$gameStatus]) => $gameStatus.pf * $gameStatus.pt);
