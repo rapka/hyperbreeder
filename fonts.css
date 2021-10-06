@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'majormono';
+    src: url('./MajorMonoDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'xanh';
+    src: url('./XanhMono-Regular.ttf') format('truetype');
+}
