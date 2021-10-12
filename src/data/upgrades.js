@@ -6,7 +6,7 @@ const upgrades = [
 		lore: 'test lore',
 		requirements: [],
 		cost: {
-			energy: 50,
+			energy: 10000,
 		},
 		apply: save => {
 			save.pf += .01;
@@ -16,7 +16,7 @@ const upgrades = [
 	{
 		id: 1,
 		title: 'test title2',
-		description: 'test desc2',
+		description: '+1 control rod',
 		lore: 'test lore2',
 		requirements: [],
 		apply: save => {

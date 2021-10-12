@@ -19,7 +19,7 @@
 		text-align: center;
 		width: 100%;
 		background: black;
-		mix-blend-mode: color-burn;
+		mix-blend-mode: darken;
 		flex: 0 0;
 	}
 
