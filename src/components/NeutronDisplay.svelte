@@ -16,7 +16,9 @@
 	.neutron-display {
 		display: flex;
 		flex-direction: row;
-		margin-bottom: 16px;
+		padding-bottom: 16px;
+		border: 1px solid #ccc;
+		border-top: 0;
 		background: rgba(0, 0, 0, 0.75);
 	}
 </style>

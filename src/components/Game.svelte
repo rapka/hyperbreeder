@@ -17,6 +17,10 @@
 		flex: 1 1;
 		margin: 4px;
 	}
+
+	#tabSelector-container {
+		box-shadow: 0 0 30px rgba(0, 0, 0, 0.75);
+	}
 </style>
 
 <script>
@@ -43,16 +47,18 @@
   </div>
   <div id="right-column">
   	<TopBar />
+  	<div id="tabSelector-container">
   	<TabSelector
   		tabData={['MAIN', 'REFUEL', 'UPGRADES', 'RESEARCH', 'FAQ']}
   		selectedTab={selectedTab}
   		onClick={changeTab}
   	/>
-    {#if selectedTab === 'MAIN'}<NeutronDisplay />
-    {:else if selectedTab === 'REFUEL'}<RefuelTab />
-    {:else if selectedTab === 'UPGRADES'}<UpgradeList />
-    {:else if selectedTab === 'RESEARCH'}<ResearchTab />
-    {:else if selectedTab === 'FAQ'}<FaqTab />
-    {/if}
+			{#if selectedTab === 'MAIN'}<NeutronDisplay />
+			{:else if selectedTab === 'REFUEL'}<RefuelTab />
+			{:else if selectedTab === 'UPGRADES'}<UpgradeList />
+			{:else if selectedTab === 'RESEARCH'}<ResearchTab />
+			{:else if selectedTab === 'FAQ'}<FaqTab />
+			{/if}
+  	</div>
   </div>
 </div>

@@ -29,6 +29,7 @@
 		writing-mode: vertical-lr;
 		text-orientation: upright;
 		text-transform: uppercase;
+		letter-spacing: -3px;
 	}
 
 	.controlRod-icon {

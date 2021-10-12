@@ -4,7 +4,7 @@
 	.controlRodList {
 		font-family: 'majormono';
 		background: rgba(0, 0, 0, 0.75);
-		padding: 4px;
+		padding: 16px 4px;
 		min-width: 300px;
 		color: white;
 		display: flex;
