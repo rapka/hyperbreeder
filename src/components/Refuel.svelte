@@ -17,7 +17,7 @@
 	import { resources } from '../stores';
 
 	const refuel = () => {
-		resources.update(o => set(o, 'powerLevel', o.powerLevel + 100));
+		resources.update(o => set(o, 'powerLevel', o.powerLevel + 10));
 		resources.update(o => set(o, 'energy', o.energy - 1000));
 	};
 </script>

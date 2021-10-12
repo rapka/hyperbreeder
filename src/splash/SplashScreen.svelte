@@ -41,6 +41,7 @@
 		font-size: 24px;
 		border: 1px solid white;
 		padding: 8px;
+
 		flex: 0 0;
 	}
 

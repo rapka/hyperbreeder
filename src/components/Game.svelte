@@ -28,6 +28,7 @@
 	import FaqTab from './FaqTab.svelte';
 	import ResearchTab from './ResearchTab.svelte';
 	import TabSelector from './TabSelector.svelte';
+	import RefuelTab from './RefuelTab.svelte';
 
 	let selectedTab = 'MAIN';
 	let changeTab = (newTab, x, xx, xxx) => {
@@ -43,11 +44,12 @@
   <div id="right-column">
   	<TopBar />
   	<TabSelector
-  		tabData={['MAIN', 'UPGRADES', 'RESEARCH', 'FAQ']}
+  		tabData={['MAIN', 'REFUEL', 'UPGRADES', 'RESEARCH', 'FAQ']}
   		selectedTab={selectedTab}
   		onClick={changeTab}
   	/>
     {#if selectedTab === 'MAIN'}<NeutronDisplay />
+    {:else if selectedTab === 'REFUEL'}<RefuelTab />
     {:else if selectedTab === 'UPGRADES'}<UpgradeList />
     {:else if selectedTab === 'RESEARCH'}<ResearchTab />
     {:else if selectedTab === 'FAQ'}<FaqTab />

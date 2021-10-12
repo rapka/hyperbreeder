@@ -2,7 +2,6 @@
 	@import '../vars';
 
 	.graphContainer {
-		background: rgba(0, 0, 0, 0.75);
 		flex-grow: 1;
 	}
 
@@ -17,12 +16,15 @@
 	.neutron-display {
 		display: flex;
 		flex-direction: row;
+		margin-bottom: 16px;
+		background: rgba(0, 0, 0, 0.75);
 	}
 </style>
 
 <script>
 	import { controlRods, counterHistory, gameStatus } from '../stores';
 	import NeutronDisplayYAxisLabels from './NeutronDisplayYAxisLabels.svelte';
+	import ControlRodList from './ControlRodList.svelte';
 
 	const MAX_HEIGHT = 400;
 	const X_INTERVAL = 30;
@@ -51,5 +53,5 @@
 </div>
 </div>
 <section class="panel panel-2">
-    <p>Control Rods: {$controlRods}</p>
+    <ControlRodList />
   </section>

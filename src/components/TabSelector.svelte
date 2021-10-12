@@ -16,7 +16,7 @@
 		color: white;
 		text-shadow: 1px 1px 5px white;
 		cursor: pointer;
-		font-size: 18px;
+		font-size: 20px;
 		text-transform: uppercase;
 	}
 

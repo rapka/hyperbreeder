@@ -1,6 +1,6 @@
 <style>
 	.pauseButton {
-		background: $togoRed;
+		background: $togoGreen;
 		padding: 4px;
 		border-radius: 8px;
 		margin: 8px 0;
@@ -10,14 +10,20 @@
 		user-select: none;
 	}
 
-	.paused {
+	.danger {
 		background: $togoGreen;
 	}
 </style>
 
 <script>
 	import classNames from 'classnames';
-	import { pauseStatus, startupTimer, startupTime } from '../stores';
+	import set from 'lodash/set';
+	import { pauseStatus, startupTimer, startupTime, resources } from '../stores';
+
+	const refuel = () => {
+		resources.update(o => set(o, 'powerLevel', o.powerLevel + 100));
+		resources.update(o => set(o, 'energy', o.energy - 1000));
+	};
 
 	const pause = () => {
 		pauseStatus.update(paused => !paused);
@@ -26,14 +32,14 @@
 	let text;
 
 	$: {
-		text = $pauseStatus ? 'Start reactor' : 'Power down';
+		text = $resources.powerLevel > 0 ? 'Reactor started' : 'Start reactor';
 
-		if (!$pauseStatus && $startupTimer < $startupTime) {
-			text = 'Starting...';
+		if (startupTimer < 0) {
+			text = 'MELTDOWN (waiting)';
 		}
 	}
 </script>
 
-<section class={classNames('pauseButton', { paused: $pauseStatus })} on:click={pause} >
+<section class={classNames('pauseButton', { danger: $startupTimer < 0 })} on:click={refuel} >
 	<h1>{text}</h1>
 </section>

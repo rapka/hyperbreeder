@@ -6,7 +6,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		background: rgba(0, 0, 0, 0.75);
 		color: white;
 		font-size: 14px;
 		padding: 4px;
