@@ -34,7 +34,7 @@
 </script>
 
 <section class="faqTab">
-	Hyperbreeder is an idle game about generating power.
+	Hyperbreeder is an idle game about generating power. This is a very, very, very early version of the game! It is not yet ready to be fun for long periods of time.
 
 	Clicking the big green "start reactor" button will begin generating energyover time. Energy can be used for upgrades and is additionally used for the initial reactor startup. If the power level reaches maximum, the reactor will automatically shut down and you will have to wait to start up again. Starting or restarting the reactor requires 1000 energy.
 

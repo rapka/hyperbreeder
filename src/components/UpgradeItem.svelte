@@ -87,7 +87,7 @@
 	}
 </script>
 
-<div class={className} on:click={onClick}>
+<div class={className} on:click={clickHandler}>
 	<div class="upgradeItem-title">{title}</div>
 	<div class="upgradeItem-desc">{description}</div>
 	<div class="upgradeItem-lore">{lore}</div>

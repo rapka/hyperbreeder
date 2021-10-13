@@ -69,6 +69,7 @@
 			const utilized = simulateThermalUtilization(neutrons);
 
 			resourcesObj.energy += utilized;
+			resourcesObj.energy = Math.min(resourcesObj.energy, $gameStatus.maxEnergy);
 			resourcesObj.waste += fissioned * .0001;
 
 			resourcesObj.xenon.unshift(0);
@@ -96,8 +97,6 @@
 				resourcesObj.iodine.pop();
 				resourcesObj.xenon.pop();
 			}
-
-			console.log('xenon af', resourcesObj.iodine);
 
 			neutrons = utilized;
 			neutrons = parseInt(simulateReproduction(neutrons));
