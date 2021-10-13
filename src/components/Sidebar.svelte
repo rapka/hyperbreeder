@@ -8,11 +8,9 @@
 <script>
 	import PauseButton from './PauseButton.svelte';
 	import StatsPanel from './StatsPanel.svelte';
-	import Refuel from './Refuel.svelte';
 </script>
 
 <div id="left-column">
   <PauseButton />
-  <Refuel />
   <StatsPanel />
 </div>

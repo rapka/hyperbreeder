@@ -3,7 +3,7 @@
 
 	.upgradeItem {
 		font-family: 'xanh';
-		background: linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen);
+		background: linear-gradient(80deg, $togoGreen, $togoYellow, $togoRed);
 		padding: 4px;
 		border-radius: 8px;
 		min-width: 300px;
@@ -36,6 +36,10 @@
 	.upgradeItem-lore {
 		font-size: 12px;
 		opacity: 0.5;
+	}
+
+	.upgradeItem-cost {
+		font-size: 14px;
 	}
 
 	.upgradeItem-purchased {
@@ -90,5 +94,6 @@
 	{#if purchased}
 		<div class="upgradeItem-purchased">Purchased</div>
 	{/if}
+	<div class="upgradeItem-cost">Cost: {JSON.stringify(cost)}</div>
 </div>
 

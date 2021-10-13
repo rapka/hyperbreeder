@@ -2,7 +2,9 @@ import { writable, derived } from 'svelte/store';
 import cloneDeep from 'lodash/cloneDeep';
 import upgrades from './data/upgrades';
 import forEach from 'lodash/forEach';
+import filter from 'lodash/filter';
 import sum from 'lodash/sum';
+import find from 'lodash/find';
 
 // Player info / random
 export const playerName = writable('player');
@@ -20,13 +22,11 @@ export const resources = writable({
 
 export const counterHistory = writable([0]);
 
-export const controlRods = writable([false, false, false, false, false, false, true, true, true, true]);
-
 const DEFAULT_VALUES = {
 	// Six factor formula vars
 	e: 1.03, // Fast Fission Factor https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/fast-fission-factor/
 	n: 2.02, // Reproduction factor https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/reproduction-factor/
-	f: 0.7 + 0.05, // Thermal Utilization Factor https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/thermal-utilization-factor/
+	f: 0.7 + 0.07, // Thermal Utilization Factor https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/thermal-utilization-factor/
 	p: 0.75, // Resonance Escape Probability https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/resonance-escape-probability/
 	pt: 0.96,
 	pf: 0.95,
@@ -34,9 +34,10 @@ const DEFAULT_VALUES = {
 	maxNeutrons: 2000,
 	maxEnergy: 10000,
 	wasteHalfLife: 1000,
-	xenonHalfLife: 10,
+	xenonHalfLife: 8,
 	iodineHalfLife: 5,
 	meltdownCooldown: 20,
+	controlRods: [false, false, false, false, false, false, false, true, true, true],
 };
 
 export let saveGame = writable(DEFAULT_VALUES);
@@ -49,12 +50,21 @@ export const startupAmount = writable(1000); // Total neutrons to feed during st
 export const startupTimer = writable(0); // Reactor startup time in ticks
 
 export const upgradeStatus = writable(upgrades);
+export const unlockedUpgrades = derived([upgradeStatus], ([$upgrades]) => filter($upgrades, upgrade => {
+	for (const id of upgrade.requirements) {
+		if (!find($upgrades, { id }).purchased) {
+			return false;
+		}
+	}
 
-const CONTROL_ROD_POWER = 0.01;
+	return true;
+}).map(unlock => unlock.id));
+
+const CONTROL_ROD_POWER = 0.005;
 
 export const gameStatus = derived(
-	[upgradeStatus, saveGame, controlRods, resources],
-	([$upgradeStatus, $saveGame, $controlRods, $resources]) => {
+	[upgradeStatus, saveGame, resources],
+	([$upgradeStatus, $saveGame, $resources]) => {
 		let clonedSave = cloneDeep($saveGame);
 		forEach($upgradeStatus, upgrade => {
 			if (upgrade.purchased) {
@@ -62,7 +72,7 @@ export const gameStatus = derived(
 			}
 		});
 
-		forEach($controlRods, rod => {
+		forEach($saveGame.controlRods, rod => {
 			if (rod) {
 				clonedSave.f = clonedSave.f - CONTROL_ROD_POWER;
 			}
@@ -78,4 +88,5 @@ export const kInf = derived([gameStatus], ([$gameStatus]) =>
 	$gameStatus.pf * $gameStatus.pt * $gameStatus.e * $gameStatus.n * $gameStatus.f * $gameStatus.p);
 export const kEff = derived([gameStatus], ([$gameStatus]) => $gameStatus.pf * $gameStatus.pt);
 
-export const poisonAmount = derived([resources], ([$resources]) => sum($resources.xenon) * 100 / ($resources.powerLevel || 1));
+// export const poisonAmount = derived([resources], ([$resources]) => sum($resources.xenon) * 1 - (1 / ($resources.powerLevel || 1)));
+export const poisonAmount = derived([resources], ([$resources]) => sum($resources.xenon));

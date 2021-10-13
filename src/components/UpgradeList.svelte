@@ -7,6 +7,8 @@
 		padding: 4px;
 		min-width: 300px;
 		color: white;
+		overflow: scroll;
+		max-height: calc(100vh - 110px);
 	}
 
 	.upgradeList-header {
@@ -15,9 +17,11 @@
 </style>
 
 <script>
-	import { upgradeStatus, resources } from '../stores';
+	import { upgradeStatus, resources, unlockedUpgrades } from '../stores';
 	import UpgradeItem from './UpgradeItem.svelte';
 	import forEach from 'lodash/forEach';
+
+	console.log('uppp', $unlockedUpgrades);
 
 	const buyUpgrade = (upgradeObject, index) => {
 		upgradeObject.purchased = true;
@@ -44,7 +48,9 @@
 <section class="upgradeList">
 	<div class="upgradeList-header">UPGRADES</div>
 	{#each $upgradeStatus as upgrade, index}
-		<UpgradeItem {...upgrade} onClick={() => buyUpgrade(upgrade, index)} />
+		{#if $unlockedUpgrades.includes(upgrade.id)}
+			<UpgradeItem {...upgrade} onClick={() => buyUpgrade(upgrade, index)} />
+		{/if}
 	{/each}
 </section>
 

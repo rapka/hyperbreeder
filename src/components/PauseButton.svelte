@@ -20,26 +20,31 @@
 	import set from 'lodash/set';
 	import { pauseStatus, startupTimer, startupTime, resources } from '../stores';
 
-	const refuel = () => {
-		resources.update(o => set(o, 'powerLevel', o.powerLevel + 100));
-		resources.update(o => set(o, 'energy', o.energy - 1000));
-	};
-
-	const pause = () => {
-		pauseStatus.update(paused => !paused);
-	};
 
 	let text;
+	let disabled;
 
 	$: {
 		text = $resources.powerLevel > 0 ? 'Reactor started' : 'Start reactor';
 
-		if (startupTimer < 0) {
+		if ($startupTimer < 0) {
 			text = 'MELTDOWN (waiting)';
+			disabled = true;
+		} else {
+			disabled = false;
 		}
 	}
+
+	const refuel = () => {
+		if (disabled) {
+			return;
+		}
+
+		resources.update(o => set(o, 'powerLevel', o.powerLevel + 100));
+		resources.update(o => set(o, 'energy', o.energy - 1000));
+	};
 </script>
 
-<section class={classNames('pauseButton', { danger: $startupTimer < 0 })} on:click={refuel} >
+<section class={classNames('pauseButton', { disabled })} on:click={refuel} >
 	<h1>{text}</h1>
 </section>

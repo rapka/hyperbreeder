@@ -24,7 +24,7 @@
 </style>
 
 <script>
-	import { controlRods, counterHistory, gameStatus } from '../stores';
+	import { counterHistory, gameStatus } from '../stores';
 	import NeutronDisplayYAxisLabels from './NeutronDisplayYAxisLabels.svelte';
 	import ControlRodList from './ControlRodList.svelte';
 

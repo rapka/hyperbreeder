@@ -2,11 +2,10 @@
 	@import '../vars';
 
 	.date-display {
-
+		padding-left: 16px;
 	}
 
 	.date-year {
-		padding: 4px;
 		display: inline-block;
 	}
 

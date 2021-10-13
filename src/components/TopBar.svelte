@@ -4,6 +4,7 @@
 	.top-bar {
 		display: flex;
 		flex-direction: row;
+		padding: 8px;
 	}
 </style>
 

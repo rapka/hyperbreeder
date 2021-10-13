@@ -7,7 +7,6 @@
 		pauseStatus,
 		saveGame,
 		startupTime, startupAmount, startupTimer,
-		controlRods,
 		poisonAmount,
 	} from '../../stores';
 	import times from 'lodash/times';
@@ -39,9 +38,8 @@
 		};
 
 		const simulateThermalUtilization = (neutrons, factor) => {
-			console.log('therrr', $gameStatus.f, (1 - $poisonAmount * 100));
-			// return rbinom(neutrons, $gameStatus.f * (1 - $poisonAmount));
-			return rbinom(neutrons, $gameStatus.f);
+			return rbinom(neutrons, $gameStatus.f * (1 - ($poisonAmount / neutrons)));
+			// return rbinom(neutrons, $gameStatus.f);
 		};
 
 		const simulateReproduction = (neutrons, factor) => {
@@ -53,15 +51,14 @@
 
 			if ($pauseStatus) {
 				return resourcesObj;
-			} else if ($startupTimer < $startupTime && $startupTimer > -1) {
+			} else if ($startupTimer < $startupTime) {
 				// neutrons += ($startupAmount / $startupTime);
 				startupTimer.update(timer => timer + 1);
-			} else if (neutrons === 0) {
-				// $pauseStatus = true;
-				$startupTimer = 0 - $gameStatus.meltdownCooldown;
 			}
 
 			saveGame.update(o => set(o, 'tickCount', o.tickCount + 1));
+
+			resourcesObj.iodine.unshift(neutrons * .064);
 
 			const fissioned = simulateFastFission(neutrons);
 			neutrons = fissioned;
@@ -71,9 +68,9 @@
 
 			const utilized = simulateThermalUtilization(neutrons);
 
-			resourcesObj.energy += neutrons - utilized;
+			resourcesObj.energy += utilized;
 			resourcesObj.waste += fissioned * .0001;
-			resourcesObj.iodine.unshift(fissioned * .064);
+
 			resourcesObj.xenon.unshift(0);
 
 			// Nuclear decay
@@ -89,19 +86,18 @@
 				return newTick;
 			});
 
-			console.log('www1', resourcesObj.iodine);
-
 			resourcesObj.xenon = resourcesObj.xenon.map((xenonTick, index) => {
 				const newTick = xenonTick * Math.exp((LN_2 / $gameStatus.xenonHalfLife) * -1 * index);
 				return newTick;
 			});
-			console.log('www2', resourcesObj.xenon);
 
 			// Optimize poison history
-			while (resourcesObj.xenon[resourcesObj.xenon.length - 1] <= 0.0001 && resourcesObj.xenon.length > 1) {
+			while (resourcesObj.xenon[resourcesObj.xenon.length - 1] <= 0.00001 && resourcesObj.xenon.length > 1) {
 				resourcesObj.iodine.pop();
 				resourcesObj.xenon.pop();
 			}
+
+			console.log('xenon af', resourcesObj.iodine);
 
 			neutrons = utilized;
 			neutrons = parseInt(simulateReproduction(neutrons));
@@ -110,7 +106,8 @@
 			if (neutrons > $gameStatus.maxNeutrons) {
 				// $pauseStatus = true;
 
-				controlRods.update(() => Array(10).fill(true));
+				$saveGame.controlRods = Array(10).fill(true);
+				$startupTimer = 0 - $gameStatus.meltdownCooldown;
 
 				resourcesObj.energy = parseInt(resourcesObj.energy / 2);
 				resourcesObj.powerLevel = 0;

@@ -49,14 +49,14 @@
   	<TopBar />
   	<div id="tabSelector-container">
   	<TabSelector
-  		tabData={['MAIN', 'REFUEL', 'UPGRADES', 'RESEARCH', 'FAQ']}
+  		tabData={['MAIN', 'UPGRADES', 'REFUEL', 'RESEARCH', 'FAQ']}
   		selectedTab={selectedTab}
   		onClick={changeTab}
   	/>
 			{#if selectedTab === 'MAIN'}<NeutronDisplay />
-			{:else if selectedTab === 'REFUEL'}<RefuelTab />
 			{:else if selectedTab === 'UPGRADES'}<UpgradeList />
 			{:else if selectedTab === 'RESEARCH'}<ResearchTab />
+			{:else if selectedTab === 'REFUEL'}<RefuelTab />
 			{:else if selectedTab === 'FAQ'}<FaqTab />
 			{/if}
   	</div>

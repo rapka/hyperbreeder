@@ -1,12 +1,7 @@
 <style>
 	@import '../vars';
 
-	.display-panel {
-
-	}
-
 	.panel-label {
-		padding: 4px;
 		display: inline-block;
 	}
 
@@ -22,9 +17,9 @@
 	const X_INTERVAL = 20;
 </script>
 
-<section class="display-panel">
+<div class="neutron-counter">
   <div class="panel-label">Power Lvl: <span class="panel-value">{$resources.powerLevel}</span></div>
   <div class="panel-label">Energy: <span class="panel-value">{$resources.energy}</span></div>
-  <div class="panel-label">Poison: <span class="panel-value">{($poisonAmount).toFixed(2)}%</span></div>
+  <div class="panel-label">Poison: <span class="panel-value">{($poisonAmount / $resources.powerLevel).toFixed(2)}</span></div>
   <div class="panel-label">Waste: <span class="panel-value">{parseInt($resources.waste)}</span></div>
-</section>
+</div>

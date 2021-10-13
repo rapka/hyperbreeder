@@ -13,21 +13,21 @@
 </style>
 
 <script>
-	import { controlRods } from '../stores';
+	import { saveGame } from '../stores';
 	import ControlRod from './ControlRod.svelte';
 	import forEach from 'lodash/forEach';
 
 	const toggleRod = (index) => {
-		// Update purchase status
-		controlRods.update(rods => {
-			rods[index] = !rods[index];
-			return rods;
+		// Update rod status
+		saveGame.update(save => {
+			save.controlRods[index] = !save.controlRods[index];
+			return save;
 		});
 	};
 </script>
 
 <section class="controlRodList">
-	{#each $controlRods as rod, index}
+	{#each $saveGame.controlRods as rod, index}
 		<ControlRod
 			active={rod}
 			onClick={() => toggleRod(index)}
