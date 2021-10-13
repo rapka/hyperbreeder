@@ -3,6 +3,8 @@
 
 	.date-display {
 		padding-left: 16px;
+		line-height: 18px;
+		font-size: 18px;
 	}
 
 	.date-year {

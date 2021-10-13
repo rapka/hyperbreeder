@@ -35,10 +35,9 @@
 	.controlRod-icon {
 		text-align: center;
 		line-height: 30px;
-		content: '';
 		width: 30px;
 		height: calc(100% - 30px);
-		transition: transform 250ms ease-in-out, filter 250ms linear;
+		transition: transform 250ms ease-in-out;
 		transform: translate(-4px, -15px);
 		background: $togoGreen;
 		margin-right: 4px;

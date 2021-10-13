@@ -1,6 +1,6 @@
 <style>
 	.pauseButton {
-		background: $togoGreen;
+		background: black;
 		padding: 4px;
 		border-radius: 8px;
 		margin: 8px 0;
@@ -8,9 +8,14 @@
 		color:  white;
 		cursor: pointer;
 		user-select: none;
+		text-align: center;
 	}
 
-	.danger {
+	.disabled {
+		background: $togoRed;
+	}
+
+	.waiting {
 		background: $togoGreen;
 	}
 </style>
@@ -20,18 +25,20 @@
 	import set from 'lodash/set';
 	import { pauseStatus, startupTimer, startupTime, resources } from '../stores';
 
-
 	let text;
 	let disabled;
+	let waiting;
 
 	$: {
-		text = $resources.powerLevel > 0 ? 'Reactor started' : 'Start reactor';
+		waiting = $resources.powerLevel === 0;
+		disabled = $startupTimer < 0;
 
-		if ($startupTimer < 0) {
+		if (disabled) {
 			text = 'MELTDOWN (waiting)';
-			disabled = true;
+		} else if (waiting) {
+			text = 'Start reactor';
 		} else {
-			disabled = false;
+			text = 'operational';
 		}
 	}
 
@@ -45,6 +52,6 @@
 	};
 </script>
 
-<section class={classNames('pauseButton', { disabled })} on:click={refuel} >
+<section class={classNames('pauseButton', { waiting, disabled })} on:click={refuel} >
 	<h1>{text}</h1>
 </section>
