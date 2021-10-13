@@ -5,9 +5,12 @@
 		font-family: 'xanh';
 		background: rgba(255, 255, 255, 0.7);
 		padding: 4px;
-		border: 1px solid $togoPink;
+		border: 1px solid white;
 		min-width: 300px;
 		font-size: 20px;
+		width: 100%;
+		margin-top: 16px;
+		box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
 	}
 
 	.statsPanel-header {

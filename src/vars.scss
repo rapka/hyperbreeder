@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $black: #000000;
 $white: #FFFFFF;
 
@@ -8,3 +10,7 @@ $togoGreen: #006A4E;
 $togoBlue: #0031FF;
 $togoPink: #FF95B1;
 $togoCyan: #2DEFCB;
+
+$togoRedDimmed: color.adjust($togoRed, $lightness: -25%);
+$togoGreenDimmed: color.adjust($togoGreen, $lightness: -25%);
+$togoYellowDimmed: color.adjust($togoYellow, $lightness: -30%);

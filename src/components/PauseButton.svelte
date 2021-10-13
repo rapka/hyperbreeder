@@ -1,22 +1,26 @@
 <style>
 	.pauseButton {
 		background: black;
-		padding: 4px;
+		padding: 16px 4px;
 		border-radius: 8px;
 		margin: 8px 0;
-		border: 1px solid white;
+		border: 2px solid white;
 		color:  white;
-		cursor: pointer;
+		cursor: default;
 		user-select: none;
 		text-align: center;
+		width: 100%;
+		font-size: 30px;
 	}
 
 	.disabled {
 		background: $togoRed;
+		cursor: not-allowed;
 	}
 
 	.waiting {
 		background: $togoGreen;
+		cursor: pointer;
 	}
 </style>
 
@@ -52,6 +56,6 @@
 	};
 </script>
 
-<section class={classNames('pauseButton', { waiting, disabled })} on:click={refuel} >
-	<h1>{text}</h1>
-</section>
+<div class={classNames('pauseButton', { waiting, disabled })} on:click={refuel} >
+	{text}
+</div>

@@ -3,7 +3,7 @@
 
 	.top-bar {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		padding: 8px;
 	}
 </style>

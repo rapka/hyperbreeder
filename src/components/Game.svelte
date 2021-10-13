@@ -1,7 +1,7 @@
 <style>
 	#game-container {
 		font-family: 'majormono';
-		background: linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen);
+		background: linear-gradient(80deg, $togoRedDimmed, $togoYellow, $togoGreen);
 		display: flex;
 		flex-direction: row;
 		height: 100vh;
@@ -10,7 +10,7 @@
 
 	#left-column {
 		flex: 0 0;
-		padding: 20px;
+		padding: 24px;
 	}
 
 	#right-column {
@@ -20,13 +20,13 @@
 
 	#tabSelector-container {
 		box-shadow: 0 0 30px rgba(0, 0, 0, 0.75);
+		margin: 8px 4px;
 	}
 </style>
 
 <script>
 	import Loop from './logic/Loop.svelte';
 	import NeutronDisplay from './NeutronDisplay.svelte';
-	import TopBar from './TopBar.svelte';
 	import UpgradeList from './UpgradeList.svelte';
 	import Sidebar from './Sidebar.svelte';
 	import FaqTab from './FaqTab.svelte';
@@ -44,15 +44,14 @@
 	<Loop />
 	<div id="left-column">
 		<Sidebar />
-  </div>
-  <div id="right-column">
-  	<TopBar />
-  	<div id="tabSelector-container">
-  	<TabSelector
-  		tabData={['MAIN', 'UPGRADES', 'REFUEL', 'RESEARCH', 'FAQ']}
-  		selectedTab={selectedTab}
-  		onClick={changeTab}
-  	/>
+	</div>
+	<div id="right-column">
+		<div id="tabSelector-container">
+		<TabSelector
+			tabData={['MAIN', 'UPGRADES', 'REFUEL', 'RESEARCH', 'FAQ']}
+			selectedTab={selectedTab}
+			onClick={changeTab}
+		/>
 			{#if selectedTab === 'MAIN'}<NeutronDisplay />
 			{:else if selectedTab === 'UPGRADES'}<UpgradeList />
 			{:else if selectedTab === 'RESEARCH'}<ResearchTab />

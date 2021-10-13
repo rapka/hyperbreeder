@@ -1,16 +1,19 @@
 <style>
-	#left-column {
-		flex: 0 0;
-		padding: 20px;
+	#sidebar {
+		padding: 20px 0;
 	}
 </style>
 
 <script>
 	import PauseButton from './PauseButton.svelte';
 	import StatsPanel from './StatsPanel.svelte';
+	import NeutronCounter from './NeutronCounter.svelte';
+	import DateDisplay from './DateDisplay.svelte';
 </script>
 
-<div id="left-column">
+<div id="sidebar">
   <PauseButton />
   <StatsPanel />
+  <NeutronCounter />
+  <DateDisplay />
 </div>
