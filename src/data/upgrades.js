@@ -81,7 +81,7 @@ const upgrades = [
 		lore: 'It goes up to 11!',
 		requirements: [],
 		apply: save => {
-			save.pf += .01;
+			save.maxNeutrons += 1000;
 			return save;
 		},
 		cost: {

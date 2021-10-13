@@ -10,6 +10,7 @@
 		text-align: center;
 		font-size: 20px;
 		line-height: 20px;
+		user-select: none;
 	}
 
 	.open {

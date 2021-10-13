@@ -43,7 +43,7 @@
 	<div>Effeciency: {($kEff * 100).toFixed(2)}%</div>
 	{#if expanded}
 		<div class="statsPanel-details">
-			Stats Breakdown
+			Detailed Stats Breakdown
 			<div>Resonance Escape Probability: {($gameStatus.p * 100).toFixed(2)}%</div>
 			<div>Reproduction factor: {$gameStatus.n}</div>
 			<div>Fast Fission Factor: {$gameStatus.e}</div>

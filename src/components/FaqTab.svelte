@@ -8,19 +8,48 @@
 		min-width: 300px;
 		color: white;
 	}
+
+	.faqTab-changelog {
+		border: 1px solid white;
+		padding: 8px;
+	}
+
+	.faqTab-changelogButton {
+		margin: 16px 0;
+		font-size: 20px;
+		display: flex;
+		flex-direction: row;
+	}
 </style>
 
 <script>
 	import { upgradeStatus, resources } from '../stores';
+	import ExpandButton from './ui/ExpandButton.svelte';
+
+	let expanded = false;
+
+	const expandToggle = () => {
+		expanded = !expanded;
+	}
 </script>
 
 <section class="faqTab">
 	Hyperbreeder is an idle game about generating power.
 
-	Clicking the big green "start reactor" button will begin generating energyover time. Energy can be used for upgrades and is additionally used for the initial reactor startup. If the power level reaches maximum, the reactor will automatically shut down and you will have to wait to start up again. Starting or restarting the reactor requires 2000 energy.
+	Clicking the big green "start reactor" button will begin generating energyover time. Energy can be used for upgrades and is additionally used for the initial reactor startup. If the power level reaches maximum, the reactor will automatically shut down and you will have to wait to start up again. Starting or restarting the reactor requires 1000 energy.
 
 	Running the reactor generates poison over time, which reduces efficiency. This can be counteracted by adjusting the control rods at the bottom of the screen: each rod in the down position decreases reactor power.
 
 	The Reactor also generates waste, which is currently unused.
+
+	<div class="faqTab-changelogButton" on:click={expandToggle}>
+		<ExpandButton open={expanded} class="faqTab-expandButton" />
+		View patch notes / Changelog
+	</div>
+	{#if expanded}
+		<div class="faqTab-changelog">
+			Changelog info will live here!
+		</div>
+	{/if}
 </section>
 
