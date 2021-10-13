@@ -24,9 +24,6 @@
 
 <script>
 	import { resources, poisonAmount, gameStatus } from '../stores';
-
-	const MAX_HEIGHT = 400;
-	const X_INTERVAL = 20;
 </script>
 
 <div class="neutron-counter">
@@ -42,7 +39,7 @@
   </span>
   <span class="counter-container">
   	<span class="counter-label">Poison: </span>
-  	<span class="counter-value">{($poisonAmount / Math.max($resources.powerLevel, 1)).toFixed(2)}</span>
+  	<span class="counter-value">{($poisonAmount / Math.max($resources.powerLevel, 1)).toFixed(2)}%</span>
   </span>
   <span class="counter-container">
   	<span class="counter-label">Waste: </span>
