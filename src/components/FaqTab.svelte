@@ -34,22 +34,22 @@
 </script>
 
 <section class="faqTab">
-	Hyperbreeder is an idle game about generating power. This is a very, very, very early version of the game! It is not yet ready to be fun for long periods of time.
+	<p>Hyperbreeder is an idle game about generating power. This is a very, very, very early version of the game! It is not yet ready to be fun for long periods of time.</p>
 
-	Clicking the big green "start reactor" button will begin generating energyover time. Energy can be used for upgrades and is additionally used for the initial reactor startup. If the power level reaches maximum, the reactor will automatically shut down and you will have to wait to start up again. Starting or restarting the reactor requires 1000 energy.
+	<p>Clicking the big green "start reactor" button will begin generating energyover time. Energy can be used for upgrades and is additionally used for the initial reactor startup. If the power level reaches maximum, the reactor will automatically shut down and you will have to wait to start up again. Starting or restarting the reactor requires 1000 energy.</p>
 
-	Running the reactor generates poison over time, which reduces efficiency. This can be counteracted by adjusting the control rods at the bottom of the screen: each rod in the up position increases overall reactor power. Poison takes time to both build up and dissipate.
+	<p>Running the reactor generates poison over time, which reduces efficiency. This can be counteracted by adjusting the control rods at the bottom of the screen: each rod in the up position increases overall reactor power. Poison takes time to both build up and dissipate.</p>
 
-	The Reactor also generates waste, which is currently unused.
+	<p>The Reactor also generates waste, which is currently unused.</p>
 
-	<div class="faqTab-changelogButton" on:click={expandToggle}>
+	<p class="faqTab-changelogButton" on:click={expandToggle}>
 		<ExpandButton open={expanded} class="faqTab-expandButton" />
 		View patch notes / Changelog
-	</div>
+	</p>
 	{#if expanded}
-		<div class="faqTab-changelog">
+		<p class="faqTab-changelog">
 			Changelog info will live here!
-		</div>
+		</p>
 	{/if}
 </section>
 

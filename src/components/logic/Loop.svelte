@@ -106,7 +106,7 @@
 				// $pauseStatus = true;
 
 				$saveGame.controlRods = Array(10).fill(true);
-				$startupTimer = 0 - $gameStatus.meltdownCooldown;
+				$startupTimer = 0 - $gameStatus.meltdownCooldown * (neutrons / 10000);
 
 				resourcesObj.energy = parseInt(resourcesObj.energy / 2);
 				resourcesObj.powerLevel = 0;

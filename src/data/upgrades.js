@@ -214,6 +214,76 @@ const upgrades = [
 			energy: 25000,
 		},
 	},
+	{
+		id: 15,
+		title: 'Moderator Coolant I',
+		description: 'Decreases thermal energy leakage during operation',
+		lore: 'tbd',
+		requirements: [],
+		apply: save => {
+			save.pt += .002;
+			return save;
+		},
+		cost: {
+			energy: 30000,
+		},
+	},
+	{
+		id: 16,
+		title: 'Moderator Coolant II',
+		description: 'Decreases thermal energy leakage during operation',
+		lore: 'tbd',
+		requirements: [15],
+		apply: save => {
+			save.pt += .002;
+			return save;
+		},
+		cost: {
+			energy: 32000,
+		},
+	},
+	{
+		id: 17,
+		title: 'Moderator Coolant III',
+		description: 'Decreases thermal energy leakage during operation',
+		lore: 'tbd',
+		requirements: [16],
+		apply: save => {
+			save.pt += .002;
+			return save;
+		},
+		cost: {
+			energy: 34000,
+		},
+	},
+	{
+		id: 18,
+		title: 'Moderator Coolant IV',
+		description: 'Decreases thermal energy leakage during operation',
+		lore: 'tbd',
+		requirements: [17],
+		apply: save => {
+			save.pt += .002;
+			return save;
+		},
+		cost: {
+			energy: 38000,
+		},
+	},
+	{
+		id: 19,
+		title: 'Moderator Coolant V',
+		description: 'Decreases thermal energy leakage during operation',
+		lore: 'tbd',
+		requirements: [18],
+		apply: save => {
+			save.pt += .002;
+			return save;
+		},
+		cost: {
+			energy: 40000,
+		},
+	},
 ];
 
 export default upgrades;
