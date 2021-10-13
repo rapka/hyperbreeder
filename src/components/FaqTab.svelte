@@ -42,6 +42,8 @@
 
 	<p>The Reactor also generates waste, which is currently unused.</p>
 
+	<p>Save files are not yet implemented. You will lose all progress if you refresh!</p>
+
 	<p class="faqTab-changelogButton" on:click={expandToggle}>
 		<ExpandButton open={expanded} class="faqTab-expandButton" />
 		View patch notes / Changelog
