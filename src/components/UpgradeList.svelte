@@ -21,8 +21,6 @@
 	import UpgradeItem from './UpgradeItem.svelte';
 	import forEach from 'lodash/forEach';
 
-	console.log('uppp', $unlockedUpgrades);
-
 	const buyUpgrade = (upgradeObject, index) => {
 		upgradeObject.purchased = true;
 
