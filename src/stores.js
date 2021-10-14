@@ -5,6 +5,8 @@ import forEach from 'lodash/forEach';
 import filter from 'lodash/filter';
 import sum from 'lodash/sum';
 import find from 'lodash/find';
+import loreTickerLines from './data/loreTickerLines';
+
 
 // Player info / random
 export const playerName = writable('player');
@@ -28,8 +30,8 @@ const DEFAULT_VALUES = {
 	n: 2.02, // Reproduction factor https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/reproduction-factor/
 	f: 0.7 + 0.07, // Thermal Utilization Factor https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/thermal-utilization-factor/
 	p: 0.75, // Resonance Escape Probability https://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-fission-chain-reaction/resonance-escape-probability/
-	pt: 0.96, // fast non leakage
-	pf: 0.95, // thermal nonleakage
+	pt: 0.96, // thermal non leakage
+	pf: 0.95, // fast nonleakage
 	tickCount: 0,
 	maxNeutrons: 2000,
 	maxEnergy: 10000,

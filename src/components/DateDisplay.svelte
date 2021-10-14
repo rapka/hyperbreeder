@@ -21,16 +21,15 @@
 </style>
 
 <script>
-	import getYear from 'date-fns/getYear';
-	import addHours from 'date-fns/addHours';
-	import format from 'date-fns/format';
 	import { gameStatus } from '../stores';
+	import getDateFromTicks from './logic/getDateFromTicks';
+	import getYear from 'date-fns/getYear';
+	import format from 'date-fns/format';
 
-	const startDate = new Date(2050, 1, 1);
 	let currentDate;
 
 	$: {
-		currentDate = addHours(startDate, $gameStatus.tickCount * 12)
+		currentDate = getDateFromTicks($gameStatus.tickCount);
 	}
 </script>
 

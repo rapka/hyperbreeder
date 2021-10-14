@@ -64,9 +64,6 @@
 	import map from 'lodash/map';
 	import classNames from 'classnames';
 
-	// export let id;
-	// export let apply;
-	// export let requirements;
 	export let title;
 	export let description;
 	export let lore;

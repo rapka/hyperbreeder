@@ -9,6 +9,7 @@
 	import StatsPanel from './StatsPanel.svelte';
 	import NeutronCounter from './NeutronCounter.svelte';
 	import DateDisplay from './DateDisplay.svelte';
+	import LoreTicker from './LoreTicker.svelte';
 </script>
 
 <div id="sidebar">
@@ -16,4 +17,5 @@
   <StatsPanel />
   <NeutronCounter />
   <DateDisplay />
+  <LoreTicker />
 </div>

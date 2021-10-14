@@ -35,7 +35,7 @@
 	.controlRod-icon {
 		text-align: center;
 		line-height: 30px;
-		width: 30px;
+		width: 30px !important;
 		height: calc(100% - 30px);
 		transition: transform 250ms ease-in-out;
 		transform: translate(-4px, -15px);
