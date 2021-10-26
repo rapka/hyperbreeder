@@ -17,7 +17,7 @@
 </style>
 
 <script>
-	import { upgradeStatus, resources, unlockedUpgrades } from '../stores';
+	import { upgradeStatus, resources, unlockedUpgrades } from '../stores/matterStores';
 	import UpgradeItem from './UpgradeItem.svelte';
 	import forEach from 'lodash/forEach';
 

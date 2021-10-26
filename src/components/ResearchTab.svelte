@@ -11,7 +11,7 @@
 </style>
 
 <script>
-	import { upgradeStatus, resources } from '../stores';
+	// import { upgradeStatus, resources } from '../stores';
 </script>
 
 <section class="researchTab">

@@ -21,7 +21,7 @@
 </style>
 
 <script>
-	import { gameStatus } from '../stores';
+	import { gameStatus } from '../stores/matterStores';
 	import getDateFromTicks from './logic/getDateFromTicks';
 	import getYear from 'date-fns/getYear';
 	import format from 'date-fns/format';

@@ -1,7 +1,7 @@
 <style>
 	#game-container {
 		font-family: 'majormono';
-		background: linear-gradient(80deg, $togoRedDimmed, $togoYellow, $togoGreen);
+		background: linear-gradient(80deg, var(--color-primary-1), var(--color-primary-2), var(--color-primary-3));
 		display: flex;
 		flex-direction: row;
 		height: 100vh;
@@ -22,30 +22,45 @@
 		box-shadow: 0 0 30px rgba(0, 0, 0, 0.75);
 		margin: 8px 4px;
 	}
+
+	.amDimension {
+		--color-primary-1: #{$togoBlue};
+		--color-primary-2: #{$togoPink};
+		--color-primary-3: #{$togoCyan};
+	}
 </style>
 
 <script>
-	import Loop from './logic/Loop.svelte';
+	import LoopM from './logic/LoopM.svelte';
+	import LoopAM from './logic/LoopAM.svelte';
 	import NeutronDisplay from './NeutronDisplay.svelte';
-	import UpgradeList from './UpgradeList.svelte';
+	import UpgradeListM from './UpgradeListM.svelte';
+	import UpgradeListAM from './UpgradeListAM.svelte';
 	import Sidebar from './Sidebar.svelte';
 	import FaqTab from './FaqTab.svelte';
 	import ResearchTab from './ResearchTab.svelte';
 	import TabSelector from './TabSelector.svelte';
 	import RefuelTab from './RefuelTab.svelte';
+	import LoreTicker from './LoreTicker.svelte';
+	import { amDimension } from '../stores';
 
 	let selectedTab = 'MAIN';
+
+
 	let changeTab = (newTab, x, xx, xxx) => {
 		selectedTab = newTab;
 	};
+
 </script>
 
-<div id="game-container">
-	<Loop />
+<div id="game-container" class="game-container" class:amDimension={$amDimension}>
+	<LoopM />
+	<LoopAM />
 	<div id="left-column">
 		<Sidebar />
 	</div>
 	<div id="right-column">
+		<LoreTicker />
 		<div id="tabSelector-container">
 		<TabSelector
 			tabData={['MAIN', 'UPGRADES', 'REFUEL', 'RESEARCH', 'FAQ']}
@@ -53,11 +68,16 @@
 			onClick={changeTab}
 		/>
 			{#if selectedTab === 'MAIN'}<NeutronDisplay />
-			{:else if selectedTab === 'UPGRADES'}<UpgradeList />
+			{:else if selectedTab === 'UPGRADES'}
+				{#if $amDimension}
+					<UpgradeListAM />
+				{:else}
+					<UpgradeListM />
+				{/if}
 			{:else if selectedTab === 'RESEARCH'}<ResearchTab />
 			{:else if selectedTab === 'REFUEL'}<RefuelTab />
 			{:else if selectedTab === 'FAQ'}<FaqTab />
 			{/if}
-  	</div>
+  		</div>
   </div>
 </div>

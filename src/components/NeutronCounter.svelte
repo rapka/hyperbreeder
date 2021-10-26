@@ -39,21 +39,25 @@
 
 <script>
 	import classNames from 'classnames';
-	import { resources, poisonAmount, gameStatus } from '../stores';
+	import { currentStore } from '../stores';
 
+	let resources, gameStatus, poisonAmount;
 	let energyClasses, powerClasses, poisonClasses, poisonValue;
 
-
 	$: {
+		resources = $currentStore.resources;
+		gameStatus = $currentStore.gameStatus;
+		poisonAmount = $currentStore.poisonAmount;
+
 		powerClasses = classNames('counter-value', {
-			'counter-value-danger': ($resources.powerLevel / $gameStatus.maxNeutrons) >= .9,
+			'counter-value-danger': (resources.powerLevel / gameStatus.maxNeutrons) >= .9,
 		});
 
 		energyClasses = classNames('counter-value', {
-			'counter-value-danger': ($resources.energy / $gameStatus.maxEnergy) >= .9,
+			'counter-value-danger': (resources.energy / gameStatus.maxEnergy) >= .9,
 		});
 
-		poisonValue = $poisonAmount / Math.max($resources.powerLevel, 1);
+		poisonValue = poisonAmount / Math.max(resources.powerLevel, 1);
 		poisonClasses = classNames('counter-value', {
 			'counter-value-danger': poisonValue >= 90,
 		});
@@ -63,13 +67,13 @@
 <div class="neutron-counter">
   <div class="counter-container">
   	<span class="counter-label">Power Lvl: </span>
-  	<span class={powerClasses}>{$resources.powerLevel}</span>
-  	<span class="counter-denominator">/{$gameStatus.maxNeutrons}</span>
+  	<span class={powerClasses}>{resources.powerLevel}</span>
+  	<span class="counter-denominator">/{gameStatus.maxNeutrons}</span>
   </div>
   <div class="counter-container">
   	<span class="counter-label">Energy: </span>
-  	<span class={energyClasses}>{$resources.energy}</span>
-  	<span class="counter-denominator">/{$gameStatus.maxEnergy}</span>
+  	<span class={energyClasses}>{resources.energy}</span>
+  	<span class="counter-denominator">/{gameStatus.maxEnergy}</span>
   </div>
   <div class="counter-container">
   	<span class="counter-label">Poison: </span>
@@ -77,6 +81,6 @@
   </div>
   <div class="counter-container waste-container">
   	<span class="counter-label">Waste: </span>
-  	<span class="counter-value">{parseInt($resources.waste)}</span>
+  	<span class="counter-value">{parseInt(resources.waste)}</span>
   </div>
 </div>

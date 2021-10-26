@@ -23,7 +23,6 @@
 </style>
 
 <script>
-	import { upgradeStatus, resources } from '../stores';
 	import ExpandButton from './ui/ExpandButton.svelte';
 
 	let expanded = false;

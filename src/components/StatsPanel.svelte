@@ -27,10 +27,17 @@
 </style>
 
 <script>
-	import { gameStatus, kEff, kInf } from '../stores';
+	import { currentStore } from '../stores';
 	import ExpandButton from './ui/ExpandButton.svelte';
 
 	let expanded = false;
+	let kInf, kEff, gameStatus;
+
+	$: {
+		gameStatus = $currentStore.gameStatus;
+		kInf = gameStatus.pf * gameStatus.pt * gameStatus.e * gameStatus.n * gameStatus.f * gameStatus.p;
+		kEff = gameStatus.pf * gameStatus.pt;
+	}
 
 	const expandToggle = () => {
 		expanded = !expanded;
@@ -42,17 +49,17 @@
 		<ExpandButton open={expanded} onClick={expandToggle} class="statsPanel-expandButton" />
 		Stats
 	</span>
-	<div>Power Level: {($kInf * 100).toFixed(2)}%</div>
-	<div>Effeciency: {($kEff * 100).toFixed(2)}%</div>
+	<div>Power Level: {(kInf * 100).toFixed(2)}%</div>
+	<div>Effeciency: {(kEff * 100).toFixed(2)}%</div>
 	{#if expanded}
 		<div class="statsPanel-details">
 			<u><b>Detailed Stats Breakdown<b></u>
-			<div>Resonance Escape Probability: {($gameStatus.p * 100).toFixed(2)}%</div>
-			<div>Reproduction factor: {$gameStatus.n}</div>
-			<div>Fast Fission Factor: {$gameStatus.e}</div>
-			<div>Thermal Utilization Factor: {$gameStatus.f}</div>
-			<div>Fast Non-leakage Probability: {($gameStatus.pf * 100).toFixed(2)}%</div>
-			<div>Thermal Non-leakage Probability: {($gameStatus.pt * 100).toFixed(2)}%</div>
+			<div>Resonance Escape Probability: {(gameStatus.p * 100).toFixed(2)}%</div>
+			<div>Reproduction factor: {gameStatus.n}</div>
+			<div>Fast Fission Factor: {gameStatus.e}</div>
+			<div>Thermal Utilization Factor: {gameStatus.f}</div>
+			<div>Fast Non-leakage Probability: {(gameStatus.pf * 100).toFixed(2)}%</div>
+			<div>Thermal Non-leakage Probability: {(gameStatus.pt * 100).toFixed(2)}%</div>
 		</div>
 	{/if}
 </div>

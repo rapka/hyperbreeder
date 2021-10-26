@@ -1,17 +1,14 @@
-
 <script>
+	import times from 'lodash/times';
+	import forEach from 'lodash/forEach';
+	import set from 'lodash/set';
 	import {
 		resources,
 		gameStatus,
 		counterHistory,
-		pauseStatus,
 		saveGame,
-		startupTime, startupAmount, startupTimer,
 		poisonAmount,
-	} from '../../stores';
-	import times from 'lodash/times';
-	import forEach from 'lodash/forEach';
-	import set from 'lodash/set';
+	} from '../../stores/antimatterStores';
 	import rbinom from './rbinom';
 
 	const MAX_HISTORY = 30;
@@ -39,7 +36,6 @@
 
 		const simulateThermalUtilization = (neutrons, factor) => {
 			return rbinom(neutrons, $gameStatus.f * (1 - ($poisonAmount / neutrons)));
-			// return rbinom(neutrons, $gameStatus.f);
 		};
 
 		const simulateReproduction = (neutrons, factor) => {
@@ -49,12 +45,11 @@
 		resources.update(resourcesObj => {
 			let neutrons = resourcesObj.powerLevel;
 
-			if ($pauseStatus) {
+			if ($gameStatus.pauseStatus) {
 				return resourcesObj;
-			} else if ($startupTimer < $startupTime) {
-				// neutrons += ($startupAmount / $startupTime);
-				startupTimer.update(timer => timer + 1);
 			}
+
+			$saveGame.startupTimer += 1;
 
 			saveGame.update(o => set(o, 'tickCount', o.tickCount + 1));
 
@@ -78,7 +73,6 @@
 			const lambda = LN_2 / gameStatus.wasteHalfLife;
 
 			resourcesObj.waste = resourcesObj.waste * Math.exp((LN_2 / $gameStatus.wasteHalfLife) * -1);
-			// resourcesObj.poison = resourcesObj.poison * Math.exp((LN_2 / $gameStatus.poisonHalfLife) * -1);
 
 			// Simulate iodine -> decay chain
 			resourcesObj.iodine = resourcesObj.iodine.map((poisonTick, index) => {
@@ -103,10 +97,8 @@
 
 			// MELTDOWN
 			if (neutrons > $gameStatus.maxNeutrons) {
-				// $pauseStatus = true;
-
 				$saveGame.controlRods = Array(10).fill(true);
-				$startupTimer = 0 - $gameStatus.meltdownCooldown * (neutrons / 10000);
+				$saveGame.startupTimer = 0 - $gameStatus.meltdownCooldown * (neutrons / 10000);
 
 				resourcesObj.energy = parseInt(resourcesObj.energy / 2);
 				resourcesObj.powerLevel = 0;

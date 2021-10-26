@@ -1,5 +1,10 @@
 @use "sass:color";
 
+:root {
+  --main-bg-color: brown;
+}
+
+
 $black: #000000;
 $white: #FFFFFF;
 
@@ -14,3 +19,11 @@ $togoCyan: #2DEFCB;
 $togoRedDimmed: color.adjust($togoRed, $lightness: -25%);
 $togoGreenDimmed: color.adjust($togoGreen, $lightness: -25%);
 $togoYellowDimmed: color.adjust($togoYellow, $lightness: -30%);
+
+:root {
+  --color-background: #{$white};
+  --color-text: #{$black};
+  --color-primary-1: #{$togoRed};
+  --color-primary-2: #{$togoYellow};
+  --color-primary-3: #{$togoGreen};
+}

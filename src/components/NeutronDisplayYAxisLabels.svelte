@@ -24,23 +24,20 @@
 </style>
 
 <script>
-	import { gameStatus } from '../stores';
-
-	const MAX_HEIGHT = 400;
-	const X_INTERVAL = 20;
+	import { currentStore } from '../stores';
 </script>
 
 <div class="y-axis">
 	<div class="y-axis echo">
-	  <div class="y-axis-number">{$gameStatus.maxNeutrons}</div>
-	  <div class="y-axis-number">{$gameStatus.maxNeutrons * 0.75}</div>
-	  <div class="y-axis-number">{$gameStatus.maxNeutrons * 0.5}</div>
-	  <div class="y-axis-number">{$gameStatus.maxNeutrons * 0.25}</div>
+	  <div class="y-axis-number">{$currentStore.gameStatus.maxNeutrons}</div>
+	  <div class="y-axis-number">{$currentStore.gameStatus.maxNeutrons * 0.75}</div>
+	  <div class="y-axis-number">{$currentStore.gameStatus.maxNeutrons * 0.5}</div>
+	  <div class="y-axis-number">{$currentStore.gameStatus.maxNeutrons * 0.25}</div>
 	  <div class="y-axis-number">0</div>
 	</div>
-  <div class="y-axis-number">{$gameStatus.maxNeutrons}</div>
-  <div class="y-axis-number">{$gameStatus.maxNeutrons * 0.75}</div>
-  <div class="y-axis-number">{$gameStatus.maxNeutrons * 0.5}</div>
-  <div class="y-axis-number">{$gameStatus.maxNeutrons * 0.25}</div>
+  <div class="y-axis-number">{$currentStore.gameStatus.maxNeutrons}</div>
+  <div class="y-axis-number">{$currentStore.gameStatus.maxNeutrons * 0.75}</div>
+  <div class="y-axis-number">{$currentStore.gameStatus.maxNeutrons * 0.5}</div>
+  <div class="y-axis-number">{$currentStore.gameStatus.maxNeutrons * 0.25}</div>
   <div class="y-axis-number">0</div>
 </div>

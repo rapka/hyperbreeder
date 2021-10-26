@@ -54,7 +54,6 @@
 </style>
 
 <script>
-	import { resources } from '../stores';
 	import forEach from 'lodash/forEach';
 	import map from 'lodash/map';
 	import classNames from 'classnames';

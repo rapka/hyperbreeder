@@ -13,13 +13,23 @@
 </style>
 
 <script>
-	import { saveGame } from '../stores';
+	import { saveGame as mSaveGame } from '../stores/matterStores';
+	import { saveGame as amSaveGame } from '../stores/antimatterStores';
+	import { amDimension } from '../stores';
 	import ControlRod from './ControlRod.svelte';
 	import forEach from 'lodash/forEach';
 
-	const toggleRod = (index) => {
+	const togglemRod = (index) => {
 		// Update rod status
-		saveGame.update(save => {
+		mSaveGame.update(save => {
+			save.controlRods[index] = !save.controlRods[index];
+			return save;
+		});
+	};
+
+	const toggleamRod = (index) => {
+		// Update rod status
+		amSaveGame.update(save => {
 			save.controlRods[index] = !save.controlRods[index];
 			return save;
 		});
@@ -27,12 +37,22 @@
 </script>
 
 <section class="controlRodList">
-	{#each $saveGame.controlRods as rod, index}
-		<ControlRod
-			active={rod}
-			onClick={() => toggleRod(index)}
-			displayName={`ctrl rod ${('00' + (index + 1)).slice(-3)}`}
-		/>
-	{/each}
+	{#if $amDimension}
+		{#each $mSaveGame.controlRods as rod, index}
+			<ControlRod
+				active={rod}
+				onClick={() => togglemRod(index)}
+				displayName={`ctrl rod ${('00' + (index + 1)).slice(-3)}`}
+			/>
+		{/each}
+	{:else}
+		{#each $amSaveGame.controlRods as rod, index}
+			<ControlRod
+				active={rod}
+				onClick={() => toggleamRod(index)}
+				displayName={`ctrl rod ${('00' + (index + 1)).slice(-3)}`}
+			/>
+		{/each}
+	{/if}
 </section>
 

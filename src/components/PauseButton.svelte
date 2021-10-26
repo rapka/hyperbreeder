@@ -27,15 +27,20 @@
 <script>
 	import classNames from 'classnames';
 	import set from 'lodash/set';
-	import { pauseStatus, startupTimer, startupTime, resources } from '../stores';
+	import { resources as mResources } from '../stores/matterStores';
+	import { resources as amResources } from '../stores/antimatterStores';
+	import { currentStore } from '../stores';
 
 	let text;
 	let disabled;
 	let waiting;
+	let gameStatus;
 
 	$: {
-		waiting = $resources.powerLevel === 0;
-		disabled = $startupTimer < 0;
+		console.log('yooo', $mResources, $currentStore);
+		gameStatus = $currentStore.gameStatus;
+		waiting = $currentStore.resources.powerLevel === 0;
+		disabled = gameStatus.startupTimer < 0;
 
 		if (disabled) {
 			text = 'MELTDOWN (waiting)';
@@ -50,9 +55,13 @@
 		if (disabled) {
 			return;
 		}
-
-		resources.update(o => set(o, 'powerLevel', o.powerLevel + 100));
-		resources.update(o => set(o, 'energy', o.energy - 1000));
+		if ($currentStore.amDimension ) {
+			mResources.update(o => set(o, 'powerLevel', o.powerLevel + 100));
+			mResources.update(o => set(o, 'energy', o.energy - gameStatus.startupAmount));
+		} else {
+			amResources.update(o => set(o, 'powerLevel', o.powerLevel + 100));
+			amResources.update(o => set(o, 'energy', o.energy - gameStatus.startupAmount));
+		}
 	};
 </script>
 

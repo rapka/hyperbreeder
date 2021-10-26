@@ -59,7 +59,7 @@
 </style>
 
 <script>
-	import { resources } from '../stores';
+	import { currentStore } from '../stores';
 	import forEach from 'lodash/forEach';
 	import map from 'lodash/map';
 	import classNames from 'classnames';
@@ -77,7 +77,7 @@
 	let clickHandler;
 
 	$: {
-		isAfforable = map(cost, (c, key) => $resources[key] && $resources[key] >= c)
+		isAfforable = map(cost, (c, key) => $currentStore.resources[key] && $currentStore.resources[key] >= c)
 			.reduce((sum, next) => sum && next, true);
 
 		className = classNames('upgradeItem', { isAfforable, purchased });
