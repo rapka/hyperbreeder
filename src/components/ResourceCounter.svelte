@@ -4,10 +4,9 @@
 	.neutron-counter {
 		display: inline-block;
 		background: rgba(255, 255, 255, 0.7);
-		padding: 8px 4px;
+		padding: 8px 0 8px 4px;
 		border: 1px solid white;
 		margin: 8px 0;
-		width: 100%;
 		box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
 	}
 

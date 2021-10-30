@@ -44,12 +44,22 @@
 		filter: drop-shadow(0 0 10px $togoGreen);
 	}
 
+	.isAm .controlRod-icon {
+		background: $togoCyanDimmed;
+		filter: drop-shadow(0 0 10px $togoCyanDimmed);
+	}
+
 	.active .controlRod-icon {
 		transform: translate(-4px, 25px);
 		filter: none;
 		content: 'X';
+		background: $togoPinkDimmed;
+		filter: drop-shadow(0 0 4px $togoPinkDimmed);
+	}
+
+	.active.isAm .controlRod-icon {
 		background: $togoRed;
-		filter: drop-shadow(0 0 4px $togoRed);
+		filter: drop-shadow(0 0 10px $togoRed);
 	}
 </style>
 
@@ -57,15 +67,18 @@
 	import forEach from 'lodash/forEach';
 	import map from 'lodash/map';
 	import classNames from 'classnames';
+	import { currentStore } from '../stores';
 
 	export let active;
 	export let displayName;
 	export let onClick = () => undefined;
+	let isAm;
 
 	let className;
 
 	$: {
-		className = classNames('controlRod', { active });
+		isAm = $currentStore.amDimension;
+		className = classNames('controlRod', { active, isAm });
 	}
 </script>
 

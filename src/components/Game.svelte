@@ -10,17 +10,17 @@
 
 	#left-column {
 		flex: 0 0;
-		padding: 24px;
+		min-width: 400px;
 	}
 
 	#right-column {
 		flex: 1 1;
-		margin: 4px;
+		margin-left: 16px;
 	}
 
 	#tabSelector-container {
 		box-shadow: 0 0 30px rgba(0, 0, 0, 0.75);
-		margin: 8px 4px;
+		margin: 8px 8px 8px 0;
 	}
 
 	.amDimension {

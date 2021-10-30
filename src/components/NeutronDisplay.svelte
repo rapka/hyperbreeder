@@ -9,6 +9,10 @@
 		filter: drop-shadow(0 0 5px #FFF);
 	}
 
+	.isError svg {
+		filter: drop-shadow(0 0 5px #F00);
+	}
+
 	.viz {
 		height: 300px;
 	}
@@ -24,6 +28,7 @@
 </style>
 
 <script>
+	import classNames from 'classnames';
 	import { currentStore, amDimension } from '../stores';
 	import NeutronDisplayYAxisLabels from './NeutronDisplayYAxisLabels.svelte';
 	import ControlRodList from './ControlRodList.svelte';
@@ -31,15 +36,16 @@
 	const MAX_HEIGHT = 300;
 	const X_INTERVAL = 30;
 
-	let counterHistory, gameStatus;
+	let counterHistory, gameStatus, isError;
 
 	$: {
 		counterHistory = $currentStore.counterHistory;
 		gameStatus = $currentStore.gameStatus;
+		isError = counterHistory.length && counterHistory[counterHistory.length - 1] === 0;
 	}
 </script>
 
-<div class="neutron-display">
+<div class={classNames('neutron-display', { isError })}>
 	<NeutronDisplayYAxisLabels />
   <div class="graphContainer">
 	<svg
@@ -55,7 +61,7 @@
 						x2={(index + 1) * X_INTERVAL}
 						y2={MAX_HEIGHT - ((counterHistory[index + 1] / gameStatus.maxNeutrons) * MAX_HEIGHT)}
 						width="1px"
-						stroke={counterHistory.length && counterHistory[counterHistory.length - 1] === 0 ? "red" : "white"}
+						stroke={isError ? "red" : "white"}
 					/>
 				{/if}
 			{/each}
@@ -68,7 +74,7 @@
 						x2={(index + 1) * X_INTERVAL}
 						y2={MAX_HEIGHT - ((counterHistory[index + 1] / gameStatus.maxNeutrons) * MAX_HEIGHT)}
 						width="1px"
-						stroke={counterHistory.length && counterHistory[counterHistory.length - 1] === 0 ? "red" : "white"}
+						stroke={isError ? "red" : "white"}
 					/>
 				{/if}
 			{/each}

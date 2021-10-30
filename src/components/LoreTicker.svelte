@@ -5,6 +5,7 @@
 		overflow: hidden;
 		display: flex;
 		flex-direction: row;
+		margin: 4px 0;
 	}
 
 	.loreTicker-label {

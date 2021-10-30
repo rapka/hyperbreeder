@@ -1,34 +1,27 @@
 <style>
 	.antimatterToggle {
-		background: $togoGreen;
+		background: rgba(0, 0, 0, 0.3);
+		border-image: repeating-linear-gradient(80deg, $togoPink, $togoCyan, $togoBlue) 20 / 1.5 / 0 stretch;
 		border-radius: 8px;
 		user-select: none;
-		display: flex;
-		flex-direction: row;
-	}
-
-	.tab {
-		display: inline-block;
-		background: linear-gradient(45deg, $togoBlue, $togoBlue, $togoPink);
-		padding: 8px;
-		flex: 1 0;
-		border: 1px solid white;
-		border-bottom: 0;
+		cursor: pointer;
+		width: 100%;
 		color: white;
 		text-shadow: 1px 1px 5px white;
-		cursor: pointer;
-		font-size: 18px;
-		text-transform: uppercase;
-	}
-
-	.selected {
-		cursor: default;
-		background: white;
-		color: black;
+		text-align: center;
+		padding: 16px 0;
+		margin: 16px 0;
+		box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+		border-style: solid;
 	}
 
 	.active {
-		transform: rotate(90deg);
+		background: rgba(255, 255, 255, 0.7);
+		box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
+		color: black;
+		text-shadow: 1px 1px 5px black;
+		border-image: repeating-linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen) 20 / 1.5 / 0 stretch;
+
 	}
 </style>
 
@@ -36,12 +29,17 @@
 	import classNames from 'classnames';
 	import { amDimension } from '../stores';
 
-	export let active = false;
+	let text;
+
 	export let onClick = () => {
 		$amDimension = !$amDimension;
 	};
+
+	$: {
+		text = $amDimension ? 'Return to matter dimension' : 'Traverse to antimatter dimsension';
+	}
 </script>
 
-<div class={`antimatterToggle${active ? ' active' : ''}`} on:click={() => onClick()}>
-	TO ANTIMATTER VERSE
+<div class={`antimatterToggle${$amDimension ? ' active' : ''}`} on:click={() => onClick()}>
+	{text}
 </div>

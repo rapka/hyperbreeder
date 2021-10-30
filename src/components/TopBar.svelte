@@ -9,11 +9,11 @@
 </style>
 
 <script>
-	import NeutronCounter from './NeutronCounter.svelte';
+	import ResourceCounter from './ResourceCounter.svelte';
 	import DateDisplay from './DateDisplay.svelte';
 </script>
 
 <section class="top-bar">
-  <NeutronCounter />
+  <ResourceCounter />
   <DateDisplay />
 </section>

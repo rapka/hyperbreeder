@@ -20,6 +20,11 @@ $togoRedDimmed: color.adjust($togoRed, $lightness: -25%);
 $togoGreenDimmed: color.adjust($togoGreen, $lightness: -25%);
 $togoYellowDimmed: color.adjust($togoYellow, $lightness: -30%);
 
+$togoBlueDimmed: color.adjust($togoBlue, $lightness: -10%);
+$togoPinkDimmed: color.adjust($togoPink, $lightness: -10%);
+$togoCyanDimmed: color.adjust($togoCyan, $lightness: -10%);
+
+
 :root {
   --color-background: #{$white};
   --color-text: #{$black};
