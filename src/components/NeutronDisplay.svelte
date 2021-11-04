@@ -49,7 +49,7 @@
 	<NeutronDisplayYAxisLabels />
   <div class="graphContainer">
 	<svg
-		class="viz"
+	  class="viz"
 	  viewBox="0 0 800 300"
 	>
 		{#if $amDimension}

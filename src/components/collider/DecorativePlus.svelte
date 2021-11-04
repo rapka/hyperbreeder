@@ -1,12 +1,12 @@
 <style>
 	@import '../vars';
 
-	.faqTab {
+	.plus {
 		font-family: 'xanh';
 		background: rgba(0, 0, 0, 0.75);
-		padding: 16px;
 		min-width: 300px;
 		color: white;
+		padding: 16px;
 	}
 </style>
 
@@ -14,7 +14,7 @@
 	// import { upgradeStatus, resources } from '../stores';
 </script>
 
-<section class="faqTab">
-	TBD
+<section class="plus">
+	+
 </section>
 

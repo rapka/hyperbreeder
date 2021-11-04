@@ -2,7 +2,6 @@
 	@import '../vars';
 
 	.neutron-counter {
-		display: inline-block;
 		background: rgba(255, 255, 255, 0.7);
 		padding: 8px 0 8px 4px;
 		border: 1px solid white;

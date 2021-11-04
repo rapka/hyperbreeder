@@ -5,6 +5,8 @@ import filter from 'lodash/filter';
 import sum from 'lodash/sum';
 import find from 'lodash/find';
 import upgrades from '../data/upgrades';
+import getDateFromTicks from '../components/logic/getDateFromTicks';
+import getYear from 'date-fns/getYear';
 
 // Resource counts
 export const resources = writable({
@@ -37,6 +39,8 @@ const DEFAULT_VALUES = {
 	xenonHalfLife: 8,
 	iodineHalfLife: 5,
 	meltdownCooldown: 20,
+	resourceBudgetBase: 1000,
+	resourceBudgetGrowth: .01,
 	controlRods: [false, false, false, false, false, false, false, true, true, true],
 };
 
@@ -77,3 +81,7 @@ export const gameStatus = derived(
 );
 
 export const poisonAmount = derived([resources], ([$resources]) => sum($resources.xenon));
+export const energyBudget = derived([gameStatus], ([$gameStatus]) =>
+	$gameStatus.resourceBudgetBase *
+	Math.exp($gameStatus.resourceBudgetGrowth *
+	(getYear(getDateFromTicks($gameStatus.tickCount)) - 2030)));

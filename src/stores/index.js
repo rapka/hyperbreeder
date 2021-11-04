@@ -63,7 +63,6 @@ export const currentStore = derived(
 	([$amDimension, $options, $mResources, $mCounterHistory, $mUpgradeStatus, $mUnlockedUpgrades, $mGameStatus, $mPoisonAmount,
 	$amResources, $amCounterHistory, $amUpgradeStatus, $amUnlockedUpgrades, $amGameStatus, $amPoisonAmount]) => {
 
-	console.log('derrrr', $amDimension, $options, $mResources, mResources);
 	return {
 		amDimension: $amDimension,
 		options: $options,

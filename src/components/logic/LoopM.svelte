@@ -8,12 +8,19 @@
 		counterHistory,
 		saveGame,
 		poisonAmount,
+		energyBudget,
 	} from '../../stores/matterStores';
+	import activityLog from '../../stores/activityLog';
 	import rbinom from './rbinom';
+	import getDateFromTicks from './getDateFromTicks';
+	import getYear from 'date-fns/getYear';
 
 	const MAX_HISTORY = 30;
 
 	const LN_2 = 0.693;
+
+	let currentYear = getYear(getDateFromTicks(0));
+	let nextYear = currentYear;
 
 	const loop = () => {
 		setTimeout(loop, 500);
@@ -51,8 +58,8 @@
 			}
 
 			$saveGame.startupTimer += 1;
+			$saveGame.tickCount += 1;
 
-			saveGame.update(o => set(o, 'tickCount', o.tickCount + 1));
 
 			resourcesObj.iodine.unshift(neutrons * .064);
 
@@ -117,6 +124,26 @@
 
 				return history;
 			});
+
+			console.log('currentYear', currentYear, nextYear, $activityLog);
+
+			nextYear = getYear(getDateFromTicks($saveGame.tickCount));
+
+
+
+			if (nextYear !== currentYear) {
+				if (resourcesObj.energy > $energyBudget) {
+					resourcesObj.energy -= $energyBudget;
+					$activityLog = [...$activityLog, `${currentYear} completed. `];
+				} else {
+					const wasteAmount = $energyBudget - resourcesObj.energy
+					$activityLog = [...$activityLog, `Energy budget for ${currentYear} missed! ${wasteAmount} waste added.`];
+					resourcesObj.waste += wasteAmount;
+					resourcesObj.energy = 0;
+				}
+
+				currentYear = nextYear;
+			}
 
 			return resourcesObj;
 		});

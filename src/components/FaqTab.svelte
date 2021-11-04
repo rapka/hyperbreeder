@@ -37,6 +37,8 @@
 
 	<p>Clicking the big green "start reactor" button will begin generating energyover time. Energy can be used for upgrades and is additionally used for the initial reactor startup. If the power level reaches maximum, the reactor will automatically shut down and you will have to wait to start up again. Starting or restarting the reactor requires 1000 energy.</p>
 
+	<p>Every year, a certain amount of energy must be budgeted for the earth rather than upgrades. Failing to meet this goal will cause fossil fuels to be used instead causing a huge increase in waste.
+
 	<p>Running the reactor generates poison over time, which reduces efficiency. This can be counteracted by adjusting the control rods at the bottom of the screen: each rod in the up position increases overall reactor power. Poison takes time to both build up and dissipate.</p>
 
 	<p>The Reactor also generates waste, which is currently unused.</p>

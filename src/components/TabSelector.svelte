@@ -1,6 +1,5 @@
 <style>
 	.tabSelector {
-		background: $togoGreen;
 		border-radius: 8px;
 		user-select: none;
 		display: flex;
@@ -9,7 +8,7 @@
 
 	.tab {
 		display: inline-block;
-		background: linear-gradient(45deg, $togoBlue, $togoBlue, $togoPink);
+		/*background: linear-gradient(45deg, $togoBlue, $togoBlue, $togoPink);*/
 		padding: 8px;
 		flex: 1 0;
 		border: 1px solid white;

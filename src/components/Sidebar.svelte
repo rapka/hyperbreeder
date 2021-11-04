@@ -10,6 +10,7 @@
 	import ResourceCounter from './ResourceCounter.svelte';
 	import DateDisplay from './DateDisplay.svelte';
 	import AntimatterToggle from './AntimatterToggle.svelte';
+	import ActivityDisplay from './ActivityDisplay.svelte';
 
 </script>
 
@@ -18,5 +19,6 @@
   <StatsPanel />
   <ResourceCounter />
   <DateDisplay />
+  <ActivityDisplay />
   <AntimatterToggle />
 </div>

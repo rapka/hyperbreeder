@@ -7,7 +7,7 @@
 		cursor: pointer;
 		width: 100%;
 		color: white;
-		text-shadow: 1px 1px 5px white;
+		text-shadow: 3px 2px 2px white;
 		text-align: center;
 		padding: 16px 0;
 		margin: 16px 0;
@@ -19,7 +19,7 @@
 		background: rgba(255, 255, 255, 0.7);
 		box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
 		color: black;
-		text-shadow: 1px 1px 5px black;
+		text-shadow: 3px 2px 2px black;
 		border-image: repeating-linear-gradient(80deg, $togoRed, $togoYellow, $togoGreen) 20 / 1.5 / 0 stretch;
 
 	}

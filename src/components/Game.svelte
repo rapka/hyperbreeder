@@ -40,9 +40,10 @@
 	import FaqTab from './FaqTab.svelte';
 	import ResearchTab from './ResearchTab.svelte';
 	import TabSelector from './TabSelector.svelte';
-	import RefuelTab from './RefuelTab.svelte';
+	import OverviewTab from './OverviewTab.svelte';
 	import LoreTicker from './LoreTicker.svelte';
 	import { amDimension } from '../stores';
+	import Popup from '../popup/Popup.svelte';
 
 	let selectedTab = 'MAIN';
 
@@ -54,6 +55,7 @@
 </script>
 
 <div id="game-container" class="game-container" class:amDimension={$amDimension}>
+	<Popup />
 	<LoopM />
 	<LoopAM />
 	<div id="left-column">
@@ -63,11 +65,12 @@
 		<LoreTicker />
 		<div id="tabSelector-container">
 		<TabSelector
-			tabData={['MAIN', 'UPGRADES', 'REFUEL', 'RESEARCH', 'FAQ']}
+			tabData={['MAIN', 'OVERVIEW', 'UPGRADES', 'RESEARCH', 'FAQ']}
 			selectedTab={selectedTab}
 			onClick={changeTab}
 		/>
 			{#if selectedTab === 'MAIN'}<NeutronDisplay />
+			{:else if selectedTab === 'OVERVIEW'}<OverviewTab />
 			{:else if selectedTab === 'UPGRADES'}
 				{#if $amDimension}
 					<UpgradeListAM />
@@ -75,7 +78,7 @@
 					<UpgradeListM />
 				{/if}
 			{:else if selectedTab === 'RESEARCH'}<ResearchTab />
-			{:else if selectedTab === 'REFUEL'}<RefuelTab />
+
 			{:else if selectedTab === 'FAQ'}<FaqTab />
 			{/if}
   		</div>
