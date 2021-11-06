@@ -1,9 +1,12 @@
-import { writable } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
+import popupStrings from '../data/popupStrings.json';
 
-const popupStatus = writable({
-	callback: () => {},
-	text: 'TESSST',
-	dismissText: 'DIS',
+export const popupStatus = writable('intro');
+
+export const popupText = derived([popupStatus], ([$popupStatus]) => {
+	if ($popupStatus) {
+		return popupStrings[$popupStatus];
+	} else {
+		return {};
+	}
 });
-
-export default popupStatus;

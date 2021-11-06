@@ -1,49 +1,81 @@
 <style>
-	#popup-container {
-		z-index: 100;
+	#popup {
+		z-index: 101;
 		background: rgba(0,0,0,0.3);
 		display: flex;
 		flex-direction: column;
-		width: 100%;
+		width: 100vw;
 		height: 100vh;
 		justify-content: center;
 		align-items: center;
 		color: white;
+		position: fixed;
+	}
+
+	#popup-overlay {
+		z-index: 100;
+		display: flex;
+		flex-direction: column;
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		background: url('noise.svg');
+		opacity: 0.2;
+	}
+
+	#popup-text-overlay {
+		z-index: -1;
+		width: 100%;
+		height: 100%;
 		position: absolute;
+		background-image: url('noise.svg');
+		opacity: 0.2;
+	}
+
+	#popup-contents-container {
+		z-index: 101;
+		font-family: 'majormono';
+		font-size: 96px;
+		text-align: center;
+		flex: 0 0;
+		border: 2px solid white;
+		width: calc(100% - 60px);
+		position: relative;
+		background: rgba(0, 0, 0, 0.75);
+		box-shadow: 0 0 150px #000;
 	}
 
 	#popup-contents {
-		text-transform: uppercase;
-		font-family: 'majormono';
-		letter-spacing: 32px;
-		font-size: 96px;
-		text-align: center;
-		width: 100%;
-		mix-blend-mode: darken;
-		flex: 0 0;
-		padding: 16px;
+		z-index: 101;
 	}
 
-	#splash-description {
+	#popup-title {
 		text-transform: uppercase;
 		font-family: 'xanh';
 		letter-spacing: 8px;
 		font-size: 24px;
+		padding-top:  16px;
 		width: 100%;
-		padding: 24px;
 		text-align: center;
-		background: black;
 		flex: 0 0;
 	}
 
-	#splash-dismiss {
+	#popup-desc {
+		font-family: 'xanh';
+		letter-spacing: 5px;
+		font-size: 16px;
+		padding-top: 16px;
+		width: 100%;
+		text-align: center;
+		flex: 0 0;
+	}
+
+	#popup-dismiss {
 		cursor: pointer;
 		background: black;
 		font-size: 24px;
 		border: 1px solid white;
 		padding: 8px;
-
-		flex: 0 0;
 	}
 
 	.dismiss-container {
@@ -52,68 +84,57 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		padding: 8px;
+		padding: 16px 0;
 		flex: 0 0;
 	}
 
-	#splash-top-spacer,
-	#splash-bottom-spacer {
-		width: 100%;
-		flex: 1 1;
-
-	}
 </style>
 
 <script>
-	export let dismiss = () => {};
-	export let text = 'TEST TEXT';
-	export let dismissText = 'TEST DISMISS';
-	let currentText = '';
-	let animationComplete = false;
-	let textArray = [];
+	import isEmpty from 'lodash/isEmpty';
+	import AnimatedText from '../components/ui/AnimatedText.svelte';
+	import { popupText, popupStatus } from '../stores/popupStatus';
+	export let onDismiss = () => {};
 
-	const loop = (a, index) => {
-		let c, interval, g, h;
-
-		if (index == a.length) {
-			animationComplete = true;
-		} else {
-			g = currentText;
-			h = Math.floor(21 * Math.random() + 5);
-			c = 32 === a[index] ? 32 : a[index] - h;
-			interval = setInterval(function() {
-				currentText = g + String.fromCharCode(c);
-
-				if (c == a[index]) {
-					clearInterval(interval);
-					c = 32;
-					index++;
-					 setTimeout(function() {
-						loop(a, index);
-					}, 100);
-				} else {
-					c++;
-				}
-			}, 50);
-		}
-	};
-
-	for (let d = text, c = 0;c < d.length; c++) {
-		textArray.push(d.charCodeAt(c));
+	let dismiss = () => {
+		onDismiss($popupStatus);
+		$popupStatus = '';
 	}
 
-	loop(textArray, 0);
+	let descPlaying = false;
+	let onTitleComplete = () => {
+		setTimeout(() => {
+			descPlaying = true;
+		}, 100);
+	}
 </script>
 
 <div id="popup-container">
-	<div id="popup-contents">
-		<div id="splash-description">
-			{currentText}
-		</div>
-		<div class="dismiss-container">
-			<div id="splash-dismiss" on:click={dismiss}>
-				{dismissText}
+	{#if isEmpty($popupText) === false}
+		<div id="popup">
+			<div id="popup-overlay" />
+			<div id="popup-contents-container">
+				<div id="popup-text-overlay" />
+				<div id="popup-contents">
+					<div id="popup-title">
+						<AnimatedText
+							text={$popupText.title}
+							onComplete={onTitleComplete}
+						/>
+					</div>
+					<div id="popup-desc">
+						<AnimatedText
+							text={$popupText.text}
+							playing={descPlaying}
+						/>
+					</div>
+					<div class="dismiss-container">
+						<div id="popup-dismiss" on:click={dismiss}>
+							{$popupText.dismissText}
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+	{/if}
 </div>

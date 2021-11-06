@@ -41,12 +41,12 @@
 		transform: translate(-4px, -15px);
 		background: $togoGreen;
 		margin-right: 4px;
-		filter: drop-shadow(0 0 10px $togoGreen);
+		/*filter: drop-shadow(0 0 10px $togoGreen);*/
 	}
 
 	.isAm .controlRod-icon {
 		background: $togoCyanDimmed;
-		filter: drop-shadow(0 0 10px $togoCyanDimmed);
+		/*filter: drop-shadow(0 0 10px $togoCyanDimmed);*/
 	}
 
 	.active .controlRod-icon {
@@ -54,12 +54,12 @@
 		filter: none;
 		content: 'X';
 		background: $togoPinkDimmed;
-		filter: drop-shadow(0 0 4px $togoPinkDimmed);
+		/*filter: drop-shadow(0 0 4px $togoPinkDimmed);*/
 	}
 
 	.active.isAm .controlRod-icon {
 		background: $togoRed;
-		filter: drop-shadow(0 0 10px $togoRed);
+		/*filter: drop-shadow(0 0 10px $togoRed);*/
 	}
 </style>
 

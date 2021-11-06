@@ -43,21 +43,28 @@
 	import OverviewTab from './OverviewTab.svelte';
 	import LoreTicker from './LoreTicker.svelte';
 	import { amDimension } from '../stores';
+	import { popupStatus } from '../stores/popupStatus';
 	import Popup from '../popup/Popup.svelte';
 
 	let selectedTab = 'MAIN';
+	let introDismissed = false;
 
 
 	let changeTab = (newTab, x, xx, xxx) => {
 		selectedTab = newTab;
 	};
 
+	const introDismiss = () => {
+		introDismissed = true;
+	};
 </script>
 
 <div id="game-container" class="game-container" class:amDimension={$amDimension}>
-	<Popup />
-	<LoopM />
-	<LoopAM />
+	<Popup onDismiss={introDismiss} />
+	{#if introDismissed === true}
+		<LoopM />
+		<LoopAM />
+	{/if}
 	<div id="left-column">
 		<Sidebar />
 	</div>
