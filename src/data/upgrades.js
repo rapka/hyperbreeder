@@ -19,7 +19,7 @@ const upgrades = [
 		id: 1,
 		title: 'Extra Control Rod II',
 		description: 'Grants another control rod. Permanently deceases reactor power in exchange for increased control.',
-		lore: 'Asumming control',
+		lore: 'An animate carbon rod',
 		requirements: [0],
 		researchRequirements: [],
 		cost: {

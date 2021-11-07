@@ -22,7 +22,11 @@
 	}
 
 	.counter-value-danger {
-		color: red;
+		color: $togoRed;
+	}
+
+	.counter-value-warning {
+		color: $togoYellow;
 	}
 
 	.counter-denominator {
@@ -40,7 +44,7 @@
 	import { currentStore } from '../stores';
 
 	let resources, gameStatus, poisonAmount;
-	let energyClasses, powerClasses, poisonClasses, poisonValue;
+	let energyClasses, powerClasses, poisonClasses, poisonPercent;
 
 	$: {
 		resources = $currentStore.resources;
@@ -55,9 +59,10 @@
 			'counter-value-danger': (resources.energy / gameStatus.maxEnergy) >= .9,
 		});
 
-		poisonValue = poisonAmount / Math.max(resources.powerLevel, 1);
+		poisonPercent = resources.powerLevel > 0 ? (poisonAmount / resources.powerLevel) : (poisonAmount / gameStatus.startupAmount);
 		poisonClasses = classNames('counter-value', {
-			'counter-value-danger': poisonValue >= 90,
+			'counter-value-warning': poisonPercent >= 80 && poisonPercent < 100,
+			'counter-value-warning': poisonPercent >= 100,
 		});
 	}
 </script>
@@ -75,7 +80,7 @@
   </div>
   <div class="counter-container">
   	<span class="counter-label">Poison: </span>
-  	<span class={poisonClasses}>{poisonValue.toFixed(2)}%</span>
+  	<span class={poisonClasses}>{poisonPercent.toFixed(2)}%</span>
   </div>
   <div class="counter-container waste-container">
   	<span class="counter-label">Waste: </span>

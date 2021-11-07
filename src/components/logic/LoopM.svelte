@@ -42,12 +42,16 @@
 		};
 
 		const simulateThermalUtilization = (neutrons, factor) => {
-			return rbinom(neutrons, $gameStatus.f * (1 - ($poisonAmount / neutrons)));
+			return rbinom(neutrons, $gameStatus.f);
 			// return rbinom(neutrons, $gameStatus.f);
 		};
 
 		const simulateReproduction = (neutrons, factor) => {
 			return neutrons * $gameStatus.n;
+		};
+
+		const simulatePoison = (neutrons) => {
+			return Math.max(neutrons - $poisonAmount, 0);
 		};
 
 		resources.update(resourcesObj => {
@@ -68,6 +72,7 @@
 			neutrons = simulateFastLeakage(neutrons);
 			neutrons = simulateResonanceEscape(neutrons);
 			neutrons = simulateThermalLeakage(neutrons);
+			neutrons = simulatePoison(neutrons);
 
 			const utilized = simulateThermalUtilization(neutrons);
 

@@ -7,7 +7,7 @@ const upgrades = [
 		requirements: [],
 		researchRequirements: [],
 		cost: {
-			energy: 100000,
+			energy: 1000000,
 		},
 		apply: save => {
 			save.controlRods.push(true);
@@ -23,7 +23,7 @@ const upgrades = [
 		requirements: [0],
 		researchRequirements: [],
 		cost: {
-			energy: 1000000,
+			energy: 10000000,
 		},
 		apply: save => {
 			save.controlRods.push(true);
@@ -39,7 +39,7 @@ const upgrades = [
 		requirements: [1],
 		researchRequirements: [],
 		cost: {
-			energy: 10000000,
+			energy: 100000000,
 		},
 		apply: save => {
 			save.controlRods.push(true);
@@ -55,7 +55,7 @@ const upgrades = [
 		requirements: [2],
 		researchRequirements: [],
 		cost: {
-			energy: 100000000,
+			energy: 1000000000,
 		},
 		apply: save => {
 			save.controlRods.push(true);
@@ -71,7 +71,7 @@ const upgrades = [
 		requirements: [3],
 		researchRequirements: [],
 		cost: {
-			energy: 1000000000,
+			energy: 10000000000,
 		},
 		apply: save => {
 			save.controlRods.push(true);
@@ -81,28 +81,28 @@ const upgrades = [
 	},
 	{
 		id: 5,
-		title: 'Increase Power Cap I',
-		description: '+1000 maximum power level',
+		title: 'Increased Power Cap I',
+		description: '+2000 maximum power level',
 		lore: 'It goes up to 11!',
 		requirements: [],
 		researchRequirements: [],
 		apply: save => {
-			save.maxNeutrons += 1000;
+			save.maxNeutrons += 2000;
 			return save;
 		},
 		cost: {
-			energy: 10000,
+			energy: 20000,
 		},
 	},
 	{
 		id: 6,
-		title: 'Increase Power Cap II',
+		title: 'Increased Power Cap II',
 		description: '+1000 maximum power level',
 		lore: 'It goes up to 11!',
 		requirements: [5],
 		researchRequirements: [],
 		apply: save => {
-			save.maxNeutrons += 1000;
+			save.maxNeutrons += 2000;
 			return save;
 		},
 		cost: {
@@ -111,54 +111,54 @@ const upgrades = [
 	},
 	{
 		id: 7,
-		title: 'Increase Power Cap III',
-		description: '+1000 maximum power level',
+		title: 'Increased Power Cap III',
+		description: '+2000 maximum power level',
 		lore: 'It goes up to 11!',
 		requirements: [6],
 		researchRequirements: [],
 		apply: save => {
-			save.maxNeutrons += 1000;
+			save.maxNeutrons += 2000;
 			return save;
 		},
 		cost: {
-			energy: 50000,
+			energy: 80000,
 		},
 	},
 	{
 		id: 8,
-		title: 'Increase Power Cap IV',
+		title: 'Increased Power Cap IV',
 		description: '+1000 maximum power level',
 		lore: 'It goes up to 11!',
 		requirements: [7],
 		researchRequirements: [],
 		apply: save => {
-			save.maxNeutrons += 1000;
+			save.maxNeutrons += 2000;
 			return save;
 		},
 		cost: {
-			energy: 100000,
+			energy: 200000,
 		},
 	},
 	{
 		id: 9,
-		title: 'Increase Power Cap V',
-		description: '+1000 maximum power level',
+		title: 'Increased Power Cap V',
+		description: '+2000 maximum power level',
 		lore: 'It goes up to 11!',
 		requirements: [8],
 		researchRequirements: [],
 		apply: save => {
-			save.maxNeutrons += 1000;
+			save.maxNeutrons += 2000;
 			return save;
 		},
 		cost: {
-			energy: 500000,
+			energy: 1000000,
 		},
 	},
 	{
 		id: 10,
 		title: 'Expanded Batteries I',
 		description: '+10K maximum energy storage',
-		lore: 'Keep going and going',
+		lore: '',
 		requirements: [],
 		researchRequirements: [],
 		apply: save => {
@@ -173,7 +173,7 @@ const upgrades = [
 		id: 11,
 		title: 'Expanded Batteries II',
 		description: '+10K maximum energy storage',
-		lore: 'Keep going and going',
+		lore: '',
 		requirements: [10],
 		researchRequirements: [],
 		apply: save => {
@@ -188,7 +188,7 @@ const upgrades = [
 		id: 12,
 		title: 'Expanded Batteries III',
 		description: '+10K maximum energy storage',
-		lore: 'Keep going and going',
+		lore: '',
 		requirements: [11],
 		researchRequirements: [],
 		apply: save => {
@@ -203,7 +203,7 @@ const upgrades = [
 		id: 13,
 		title: 'Expanded Batteries IV',
 		description: '+10K maximum energy storage',
-		lore: 'Keep going and going',
+		lore: '',
 		requirements: [12],
 		researchRequirements: [],
 		apply: save => {
@@ -218,7 +218,7 @@ const upgrades = [
 		id: 14,
 		title: 'Expanded Batteries V',
 		description: '+10K maximum energy storage',
-		lore: 'Keep going and going',
+		lore: '',
 		requirements: [13],
 		researchRequirements: [],
 		apply: save => {

@@ -23,7 +23,7 @@
 		display: inline-block;
 		width: max-content;
 		white-space: pre;
-		max-width: 500px;
+		max-width: 607px;
 		overflow: hidden;
 	}
 </style>
@@ -43,7 +43,6 @@
 	let rotated = text;
 
 	function rotate(text, noOfChars = 0){
-		console.log('rorating', text, noOfChars);
 		if (noOfChars <= text.length) {
 			setTimeout(() => rotate(text, noOfChars + 1), 250);
 		} else {

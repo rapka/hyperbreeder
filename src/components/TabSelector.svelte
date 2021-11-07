@@ -8,7 +8,7 @@
 
 	.tab {
 		display: inline-block;
-		/*background: linear-gradient(45deg, $togoBlue, $togoBlue, $togoPink);*/
+		background: rgba(0, 0, 0, 0.5);
 		padding: 8px;
 		flex: 1 0;
 		border: 1px solid white;

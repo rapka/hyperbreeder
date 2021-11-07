@@ -9,13 +9,13 @@ const loreLines = [
 	},
 	{
 		id: 1,
-		text: 'Always valid lore line',
-		isValid: save => true,
+		text: 'Nuclear meltdown leads to shutdown of hyperbreeder reactor.',
+		isValid: save => save.tickCount < 0,
 	},
 	{
 		id: 2,
-		text: 'Never valid lore line',
-		isValid: save => false,
+		text: 'The hyperbreeder reactor celebrates 2040 as its tenth anniversary!',
+		isValid: save => getYear(getDateFromTicks(save.tickCount)) === 2040,
 	},
 ];
 

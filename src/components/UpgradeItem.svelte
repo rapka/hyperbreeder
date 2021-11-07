@@ -3,12 +3,12 @@
 
 	.upgradeItem {
 		font-family: 'xanh';
-		background: linear-gradient(80deg, $togoGreen, $togoYellow, $togoRed);
+
 		padding: 4px;
 		border-radius: 8px;
 		min-width: 300px;
 		border: 1px solid $togoRed;
-		margin:  4px;
+		margin: 6px 4px;
 		opacity: 0.5;
 		color:  white;
 		position: relative;
@@ -34,6 +34,7 @@
 	}
 
 	.upgradeItem-lore {
+		color: $togoYellow;
 		font-size: 12px;
 		opacity: 0.5;
 	}
@@ -80,7 +81,7 @@
 		isAfforable = map(cost, (c, key) => $currentStore.resources[key] && $currentStore.resources[key] >= c)
 			.reduce((sum, next) => sum && next, true);
 
-		className = classNames('upgradeItem', { isAfforable, purchased });
+		className = classNames('upgradeItem', { isAfforable: isAfforable && !purchased, purchased });
 		clickHandler = () => {
 			(isAfforable && !purchased) ? onClick() : null;
 		}

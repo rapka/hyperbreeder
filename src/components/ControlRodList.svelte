@@ -41,7 +41,7 @@
 		{#each $amSaveGame.controlRods as rod, index}
 			<ControlRod
 				active={rod}
-				onClick={() => togglemRod(index)}
+				onClick={() => toggleamRod(index)}
 				displayName={`ctrl rod ${('00' + (index + 1)).slice(-3)}`}
 			/>
 		{/each}
@@ -49,7 +49,7 @@
 		{#each $mSaveGame.controlRods as rod, index}
 			<ControlRod
 				active={rod}
-				onClick={() => toggleamRod(index)}
+				onClick={() => togglemRod(index)}
 				displayName={`ctrl rod ${('00' + (index + 1)).slice(-3)}`}
 			/>
 		{/each}
