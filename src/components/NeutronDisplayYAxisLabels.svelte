@@ -9,6 +9,7 @@
 		color: white;
 		font-size: 14px;
 		padding: 4px;
+		z-index: 10;
 	}
 
 	.echo {

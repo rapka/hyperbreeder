@@ -3,6 +3,7 @@
 
 	.graphContainer {
 		flex-grow: 1;
+		z-index: 10;
 	}
 
 	svg {
@@ -13,17 +14,29 @@
 		filter: drop-shadow(0 0 5px #F00);
 	}
 
+	.neutron-display-overlay {
+		z-index: 1;
+		opacity: 0.4;
+		mix-blend-mode: hard-light;
+		background: url('noise.svg');
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+
 	.viz {
 		height: 300px;
 	}
 
 	.neutron-display {
+		z-index: 10;
 		display: flex;
 		flex-direction: row;
 		padding-bottom: 16px;
 		border: 1px solid #ccc;
 		border-top: 0;
 		background: rgba(0, 0, 0, 0.75);
+		position: relative;
 	}
 </style>
 
@@ -36,16 +49,20 @@
 	const MAX_HEIGHT = 300;
 	const X_INTERVAL = 30;
 
-	let counterHistory, gameStatus, isError;
+	let counterHistory, gameStatus, isError, disabled;
 
 	$: {
 		counterHistory = $currentStore.counterHistory;
 		gameStatus = $currentStore.gameStatus;
 		isError = counterHistory.length && counterHistory[counterHistory.length - 1] === 0;
+		disabled = gameStatus.startupTimer < 0;
 	}
 </script>
 
-<div class={classNames('neutron-display', { isError })}>
+<div class={classNames('neutron-display', { isError, disabled })}>
+	{#if disabled !== true}
+		<div class="neutron-display-overlay" />
+  	{/if}
 	<NeutronDisplayYAxisLabels />
   <div class="graphContainer">
 	<svg

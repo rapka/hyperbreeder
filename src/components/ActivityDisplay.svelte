@@ -27,10 +27,6 @@
 
 <script>
 	import activityLog from '../stores/activityLog';
-
-	$: {
-		console.log('lll', $activityLog);
-	}
 </script>
 
 <div class="activity-display">

@@ -38,7 +38,7 @@
 
 <section class="controlRodList">
 	{#if $amDimension}
-		{#each $mSaveGame.controlRods as rod, index}
+		{#each $amSaveGame.controlRods as rod, index}
 			<ControlRod
 				active={rod}
 				onClick={() => togglemRod(index)}
@@ -46,7 +46,7 @@
 			/>
 		{/each}
 	{:else}
-		{#each $amSaveGame.controlRods as rod, index}
+		{#each $mSaveGame.controlRods as rod, index}
 			<ControlRod
 				active={rod}
 				onClick={() => toggleamRod(index)}

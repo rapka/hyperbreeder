@@ -5,18 +5,25 @@
 		overflow: hidden;
 		display: flex;
 		flex-direction: row;
-		margin: 4px 0;
+		margin: 8px 8px 4px 0;
+		border: 1px solid white;
+		background: rgba(0, 0, 0, 0.5);
 	}
 
 	.loreTicker-label {
-		border: 1px solid white;
+		background: white;
+		color: black;
+		border-right: 1px solid white;
+		padding-right: 12px;
 	}
 
 	.loreTicker span {
-	  display: inline-block;
-	  width: max-content;
-	  white-space: pre;
-	  max-width: 500px;
+		padding-left: 1px;
+		color: white;
+		display: inline-block;
+		width: max-content;
+		white-space: pre;
+		max-width: 500px;
 		overflow: hidden;
 	}
 </style>
@@ -27,14 +34,16 @@
 	import format from 'date-fns/format';
 	import nextLoreTickerLine from '../data/nextLoreTickerLine';
 
-	const TEXT_PADDING = '             ';
+	const TEXT_PADDING = '                ';
 
 	let nextLine = nextLoreTickerLine($currentStore.gameStatus);
 
-	let text = `${' '.repeat(nextLine.length)}${nextLine}`;
+	// let text = `${' '.repeat(nextLine.length)}${nextLine}`;
+	let text = TEXT_PADDING + nextLine;
 	let rotated = text;
 
 	function rotate(text, noOfChars = 0){
+		console.log('rorating', text, noOfChars);
 		if (noOfChars <= text.length) {
 			setTimeout(() => rotate(text, noOfChars + 1), 250);
 		} else {
@@ -58,3 +67,4 @@
 	    {rotated}
 	</span>
 </div>
+

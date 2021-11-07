@@ -125,11 +125,7 @@
 				return history;
 			});
 
-			console.log('currentYear', currentYear, nextYear, $activityLog);
-
 			nextYear = getYear(getDateFromTicks($saveGame.tickCount));
-
-
 
 			if (nextYear !== currentYear) {
 				if (resourcesObj.energy > $energyBudget) {
