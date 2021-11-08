@@ -11,10 +11,12 @@
 	import DateDisplay from './DateDisplay.svelte';
 	import AntimatterToggle from './AntimatterToggle.svelte';
 	import ActivityDisplay from './ActivityDisplay.svelte';
+	import OptionsMenu from './OptionsMenu.svelte';
 
 </script>
 
 <div id="sidebar">
+	<OptionsMenu />
   <PauseButton />
   <StatsPanel />
   <ResourceCounter />

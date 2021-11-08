@@ -55,7 +55,6 @@
 		};
 
 		resources.update(resourcesObj => {
-			console.log('loomp up');
 			let neutrons = resourcesObj.powerLevel;
 
 			if ($gameStatus.pauseStatus) {
@@ -64,7 +63,6 @@
 
 			$saveGame.startupTimer += 1;
 			$saveGame.tickCount += 1;
-
 
 			resourcesObj.iodine.unshift(neutrons * .064);
 
@@ -75,11 +73,7 @@
 			neutrons = simulateThermalLeakage(neutrons);
 			neutrons = simulatePoison(neutrons);
 
-			console.log('loomp up2', neutrons);
-
 			const utilized = simulateThermalUtilization(neutrons);
-
-			console.log('loomp up3', neutrons);
 
 			resourcesObj.energy += utilized;
 			resourcesObj.energy = Math.min(resourcesObj.energy, $gameStatus.maxEnergy);

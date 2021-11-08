@@ -37,7 +37,11 @@ const DEFAULT_VALUES = {
 	xenonHalfLife: 8,
 	iodineHalfLife: 5,
 	meltdownCooldown: 800,
+	resourceBudgetBase: 2000,
+	resourceBudgetGrowth: .01,
 	controlRods: [false, false, false, false, false, false, false, true, true, true],
+	lowerThresholds: [],
+	uppperThresholds: [],
 };
 
 export let saveGame = writable(DEFAULT_VALUES);

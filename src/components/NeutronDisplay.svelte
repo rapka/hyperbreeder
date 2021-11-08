@@ -56,7 +56,6 @@
 		gameStatus = $currentStore.gameStatus;
 		isError = counterHistory.length && counterHistory[counterHistory.length - 1] === 0;
 		disabled = gameStatus.startupTimer < 0;
-		console.log('disss', gameStatus.startupTimer);
 	}
 </script>
 

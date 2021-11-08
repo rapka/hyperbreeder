@@ -42,6 +42,8 @@ const DEFAULT_VALUES = {
 	resourceBudgetBase: 1000,
 	resourceBudgetGrowth: .01,
 	controlRods: [false, false, false, false, false, false, false, true, true, true],
+	lowerThresholds: [],
+	uppperThresholds: [],
 };
 
 export let saveGame = writable(DEFAULT_VALUES);
