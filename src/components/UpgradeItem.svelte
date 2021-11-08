@@ -46,16 +46,20 @@
 	.upgradeItem-purchased {
 		z-index: 1;
 		background: rgba(0, 0, 0, 0.9);
-		opacity: 0.75;
+		opacity: 0.8;
 		width: 100%;
 		padding: 100px;
 		transform: rotate(-5deg);
 		top: -130px;
-		left: -20px;
+		left: -18px;
 		text-transform: uppercase;
 		position: absolute;
 		font-size: 50px;
 		letter-spacing: 20px;
+	}
+
+	.upgradeItem-costResource {
+		margin-right: 8px;
 	}
 </style>
 
@@ -95,6 +99,11 @@
 	{#if purchased}
 		<div class="upgradeItem-purchased">Purchased</div>
 	{/if}
-	<div class="upgradeItem-cost">Cost: {JSON.stringify(cost)}</div>
+	<div class="upgradeItem-cost">Cost:
+	{#each Object.entries(cost) as [costResource, costAmount]}
+			<span class="upgradeitem-costAmount">{costAmount}</span>
+			<span class="upgradeitem-costResource">{costResource}</span>
+		{/each}
+	</div>
 </div>
 

@@ -23,6 +23,7 @@
 	let nextYear = currentYear;
 
 	const loop = () => {
+		console.log('loomp start');
 		setTimeout(loop, 500);
 
 		const simulateFastFission = (neutrons, factor) => {
@@ -43,7 +44,6 @@
 
 		const simulateThermalUtilization = (neutrons, factor) => {
 			return rbinom(neutrons, $gameStatus.f);
-			// return rbinom(neutrons, $gameStatus.f);
 		};
 
 		const simulateReproduction = (neutrons, factor) => {
@@ -55,6 +55,7 @@
 		};
 
 		resources.update(resourcesObj => {
+			console.log('loomp up');
 			let neutrons = resourcesObj.powerLevel;
 
 			if ($gameStatus.pauseStatus) {
@@ -74,7 +75,11 @@
 			neutrons = simulateThermalLeakage(neutrons);
 			neutrons = simulatePoison(neutrons);
 
+			console.log('loomp up2', neutrons);
+
 			const utilized = simulateThermalUtilization(neutrons);
+
+			console.log('loomp up3', neutrons);
 
 			resourcesObj.energy += utilized;
 			resourcesObj.energy = Math.min(resourcesObj.energy, $gameStatus.maxEnergy);
@@ -110,8 +115,8 @@
 
 			// MELTDOWN
 			if (neutrons > $gameStatus.maxNeutrons) {
-				$saveGame.controlRods = Array(10).fill(true);
-				$saveGame.startupTimer = 0 - $gameStatus.meltdownCooldown * (neutrons / 10000);
+				$saveGame.controlRods = Array($saveGame.controlRods.length).fill(true);
+				$saveGame.startupTimer = parseInt(0 - $gameStatus.meltdownCooldown * (neutrons / $gameStatus.maxNeutrons));
 
 				resourcesObj.energy = parseInt(resourcesObj.energy / 2);
 				resourcesObj.powerLevel = 0;

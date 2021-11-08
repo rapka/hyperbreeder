@@ -36,7 +36,7 @@ const DEFAULT_VALUES = {
 	wasteHalfLife: 1000,
 	xenonHalfLife: 8,
 	iodineHalfLife: 5,
-	meltdownCooldown: 20,
+	meltdownCooldown: 800,
 	controlRods: [false, false, false, false, false, false, false, true, true, true],
 };
 

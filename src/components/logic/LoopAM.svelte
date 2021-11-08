@@ -16,7 +16,7 @@
 	const LN_2 = 0.693;
 
 	const loop = () => {
-		setTimeout(loop, 500);
+		setTimeout(loop, 250);
 
 		const simulateFastFission = (neutrons, factor) => {
 			return neutrons * $gameStatus.e;
@@ -35,7 +35,7 @@
 		};
 
 		const simulateThermalUtilization = (neutrons, factor) => {
-			return rbinom(neutrons, $gameStatus.f * $poisonAmount);
+			return rbinom(neutrons, $gameStatus.f);
 		};
 
 		const simulateReproduction = (neutrons, factor) => {
@@ -102,8 +102,8 @@
 
 			// MELTDOWN
 			if (neutrons > $gameStatus.maxNeutrons) {
-				$saveGame.controlRods = Array(10).fill(true);
-				$saveGame.startupTimer = 0 - $gameStatus.meltdownCooldown * (neutrons / 10000);
+				$saveGame.controlRods = Array($saveGame.controlRods.length).fill(true);
+				$saveGame.startupTimer = parseInt(0 - $gameStatus.meltdownCooldown * (neutrons / $gameStatus.maxNeutrons));
 
 				resourcesObj.energy = parseInt(resourcesObj.energy / 2);
 				resourcesObj.powerLevel = 0;

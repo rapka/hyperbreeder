@@ -56,11 +56,12 @@
 		gameStatus = $currentStore.gameStatus;
 		isError = counterHistory.length && counterHistory[counterHistory.length - 1] === 0;
 		disabled = gameStatus.startupTimer < 0;
+		console.log('disss', gameStatus.startupTimer);
 	}
 </script>
 
 <div class={classNames('neutron-display', { isError, disabled })}>
-	{#if disabled !== true}
+	{#if disabled === true}
 		<div class="neutron-display-overlay" />
   	{/if}
 	<NeutronDisplayYAxisLabels />

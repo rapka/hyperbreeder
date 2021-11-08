@@ -66,7 +66,7 @@
 			text2 = '.';
 
 			if (isAm) {
-				times(4 - (gameStatus.startupTimer % 3), () => {
+				times(4 - (gameStatus.startupTimer % 5), () => {
 					text2 += '..';
 				});
 			} else {
