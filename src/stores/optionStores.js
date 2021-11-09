@@ -8,6 +8,7 @@ const options = writable({
 	darkMode: false,
 	textSpeed: 3,
 	performanceMode: false,
+	fancyNumbers: true,
 });
 
 export default options;

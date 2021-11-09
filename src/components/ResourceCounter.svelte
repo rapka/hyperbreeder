@@ -42,6 +42,7 @@
 <script>
 	import classNames from 'classnames';
 	import { currentStore } from '../stores';
+	import FormattedNumber from './ui/FormattedNumber.svelte';
 
 	let resources, gameStatus, poisonAmount;
 	let energyClasses, powerClasses, poisonClasses, poisonPercent;
@@ -70,13 +71,13 @@
 <div class="neutron-counter">
   <div class="counter-container">
   	<span class="counter-label">Power Lvl: </span>
-  	<span class={powerClasses}>{resources.powerLevel}</span>
-  	<span class="counter-denominator">/{gameStatus.maxNeutrons}</span>
+  	<span class={powerClasses}><FormattedNumber value={resources.powerLevel} /></span>
+  	<span class="counter-denominator">/<FormattedNumber value={gameStatus.maxNeutrons} /></span>
   </div>
   <div class="counter-container">
   	<span class="counter-label">Energy: </span>
-  	<span class={energyClasses}>{resources.energy}</span>
-  	<span class="counter-denominator">/{gameStatus.maxEnergy}</span>
+  	<span class={energyClasses}><FormattedNumber value={resources.energy} /></span>
+  	<span class="counter-denominator">/<FormattedNumber value={gameStatus.maxEnergy} /></span>
   </div>
   <div class="counter-container">
   	<span class="counter-label">Poison: </span>
@@ -84,6 +85,6 @@
   </div>
   <div class="counter-container waste-container">
   	<span class="counter-label">Waste: </span>
-  	<span class="counter-value">{parseInt(resources.waste)}</span>
+  	<span class="counter-value"><FormattedNumber value={resources.waste} /></span>
   </div>
 </div>
