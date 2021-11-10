@@ -7,6 +7,8 @@
 		padding: 16px;
 		min-width: 300px;
 		color: white;
+		display: flex;
+		flex-direction: row;
 	}
 
 	.poison-chart {
@@ -17,13 +19,15 @@
 <script>
 	import { currentStore } from '../stores';
 	import PoisonDisplay from './PoisonDisplay.svelte';
+	import ResourceBudgetDisplay from './ResourceBudgetDisplay.svelte';
 </script>
 
 <section class="overviewTab">
-	TBD
+	<div class="resource-budget">
+		<ResourceBudgetDisplay />
+	</div>
 	<div class="poison-chart">
 		<PoisonDisplay />
 	</div>
-	<div class="resource-budget"></div>
 </section>
 

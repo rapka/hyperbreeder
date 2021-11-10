@@ -34,23 +34,23 @@ export const combinedStore = derived(
 			matter: $mResources,
 			antimatter: $amResources,
 		},
-		mCounterHistory: {
+		counterHistory: {
 			matter: $mCounterHistory,
 			antimatter: $amCounterHistory,
 		},
-		mUpgradeStatus: {
+		upgradeStatus: {
 			matter: $mUpgradeStatus,
 			antimatter: $amUpgradeStatus,
 		},
-		mUnlockedUpgrades: {
+		unlockedUpgrades: {
 			matter: $mUnlockedUpgrades,
 			antimatter: $amUnlockedUpgrades,
 		},
-		mGameStatus: {
+		gameStatus: {
 			matter: $mGameStatus,
 			antimatter: $mGameStatus,
 		},
-		mPoisonAmount: {
+		poisonAmount: {
 			matter: $mPoisonAmount,
 			antimatter: $amPoisonAmount,
 		},

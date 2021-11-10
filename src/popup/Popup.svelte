@@ -20,7 +20,7 @@
 		height: 100vh;
 		position: fixed;
 		background: url('noise.svg');
-		opacity: 0.2;
+		opacity: 0.15;
 	}
 
 	#popup-text-overlay {

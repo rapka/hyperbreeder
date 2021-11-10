@@ -60,6 +60,8 @@
 			'counter-value-danger': (resources.energy / gameStatus.maxEnergy) >= .9,
 		});
 
+		console.log('poisonAmount', poisonAmount);
+
 		poisonPercent = resources.powerLevel > 0 ? (poisonAmount / resources.powerLevel) : (poisonAmount / gameStatus.startupAmount);
 		poisonClasses = classNames('counter-value', {
 			'counter-value-warning': poisonPercent >= 80 && poisonPercent < 100,
@@ -81,7 +83,7 @@
   </div>
   <div class="counter-container">
   	<span class="counter-label">Poison: </span>
-  	<span class={poisonClasses}>{poisonPercent.toFixed(2)}%</span>
+  	<span class={poisonClasses}>{(poisonPercent * 100).toFixed(2)}%</span>
   </div>
   <div class="counter-container waste-container">
   	<span class="counter-label">Waste: </span>

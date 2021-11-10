@@ -5,11 +5,7 @@
 		transform: rotate(0deg);
 		transition: transform 200ms;
 		cursor: pointer;
-		width: 20px;
-		height: 20px;
 		text-align: center;
-		font-size: 20px;
-		line-height: 20px;
 		user-select: none;
 	}
 

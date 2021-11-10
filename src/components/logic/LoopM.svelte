@@ -23,7 +23,6 @@
 	let nextYear = currentYear;
 
 	const loop = () => {
-		console.log('loomp start');
 		setTimeout(loop, 500);
 
 		const simulateFastFission = (neutrons, factor) => {

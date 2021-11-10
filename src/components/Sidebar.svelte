@@ -11,7 +11,7 @@
 	import DateDisplay from './DateDisplay.svelte';
 	import AntimatterToggle from './AntimatterToggle.svelte';
 	import ActivityDisplay from './ActivityDisplay.svelte';
-	import OptionsMenu from './OptionsMenu.svelte';
+	import OptionsMenu from './options/OptionsMenu.svelte';
 
 </script>
 

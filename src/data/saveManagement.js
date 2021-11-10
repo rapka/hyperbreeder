@@ -1,14 +1,14 @@
 import getDateFromTicks from '../components/logic/getDateFromTicks';
 import getYear from 'date-fns/getYear';
 
-export const exportSave = (saveGame, resources) => {
-	const saveJson = {
-		saveGame,
-		resources,
-	};
+export const encodeSave = (saveGame) => {
+	const base64 = window.btoa(JSON.stringify(saveGame));
 
-	const base64 = window.btoa(JSON.stringify(saveJson));
-
-	console.log('base64', base64);
 	return base64;
+};
+
+export const decodeSave = (base64) => {
+	const saveJson = JSON.parse(window.atob(base64));
+
+	return saveJson;
 };
