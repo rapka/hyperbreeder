@@ -11,7 +11,6 @@
 	import options from '../../stores/optionStores';
 	export let text = 'TEST TEXT';
 	export let onComplete = () => {};
-	export let slowMode = true;
 	export let playing = true;
 	let currentText = [];
 	let animationComplete = false;

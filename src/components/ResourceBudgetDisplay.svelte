@@ -26,12 +26,10 @@
 </style>
 
 <script>
-	import classNames from 'classnames';
 	import { amDimension } from '../stores';
 	import { resources, energyBudget  } from '../stores/matterStores';
 
 	const MAX_HEIGHT = 400;
-	const X_INTERVAL = 30;
 	const Y_OFFSET = 10;
 
 	// const strokeDashoffset = circumference - (progress / 100) * circumference;

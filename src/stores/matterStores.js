@@ -61,8 +61,8 @@ export const unlockedUpgrades = derived([upgradeStatus], ([$upgrades]) => filter
 
 
 export const gameStatus = derived(
-	[upgradeStatus, saveGame, resources],
-	([$upgradeStatus, $saveGame, $resources]) => {
+	[upgradeStatus, saveGame],
+	([$upgradeStatus, $saveGame]) => {
 		let clonedSave = cloneDeep($saveGame);
 		forEach($upgradeStatus, upgrade => {
 			if (upgrade.purchased) {
@@ -75,8 +75,6 @@ export const gameStatus = derived(
 				clonedSave.f = clonedSave.f - CONTROL_ROD_POWER;
 			}
 		});
-
-		// clonedSave.f -= $resources.poison;
 
 		return clonedSave;
 	},

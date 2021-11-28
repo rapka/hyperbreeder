@@ -10,6 +10,7 @@ module.exports = {
   plugins: [
     'svelte3'
   ],
+  extends: ['eslint:recommended'],
   overrides: [
     {
       files: ['*.svelte'],

@@ -26,14 +26,9 @@
 </style>
 
 <script>
-	import classNames from 'classnames';
 	import { currentStore } from '../stores';
-	import NeutronDisplayYAxisLabels from './NeutronDisplayYAxisLabels.svelte';
 
-	const MAX_HEIGHT = 300;
-	const X_INTERVAL = 30;
-
-	let counterHistory, gameStatus, disabled;
+	let counterHistory, gameStatus;
 
 	const radius = 90;
 	const stroke = 20;
@@ -67,7 +62,7 @@
 
 		const getProgress = (progressValue) => hasPower ? (progressValue / powerLevel) : (progressValue / startupAmount);
 
-		poisonValues = $currentStore.resources.xenon.map((value, index) => {
+		poisonValues = $currentStore.resources.xenon.map((value) => {
 			let progress = getProgress(value);
 			let progress2 = getProgress(value * 10);
 			let progress3 = getProgress(value * 100);
@@ -97,7 +92,7 @@
 		>
 				{#each poisonValues as poisonEntry, index}
 						<circle
-							stroke={`\#FF${Math.min(index, 9)}${Math.min(index, 9)}${Math.min(index, 9)}${Math.min(index, 9)}`}
+							stroke={`#FF${Math.min(index, 9)}${Math.min(index, 9)}${Math.min(index, 9)}${Math.min(index, 9)}`}
 							fill="transparent"
 							stroke-width={stroke}
 							stroke-dasharray={`${poisonEntry.value1} ${circumference}`}
@@ -117,7 +112,7 @@
 							cy={radius2 + 24}
 						/>
 						<circle
-							stroke={`\#${Math.min(index, 9)}${Math.min(index, 9)}${Math.min(index, 9)}${Math.min(index, 9)}FF`}
+							stroke={`#${Math.min(index, 9)}${Math.min(index, 9)}${Math.min(index, 9)}${Math.min(index, 9)}FF`}
 							fill="transparent"
 							stroke-width={stroke3}
 							stroke-dasharray={`${poisonEntry.value3} ${circumference3}`}

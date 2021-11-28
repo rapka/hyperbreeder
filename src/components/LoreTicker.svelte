@@ -29,9 +29,7 @@
 </style>
 
 <script>
-	import sample from 'lodash/sample';
 	import { currentStore } from '../stores';
-	import format from 'date-fns/format';
 	import nextLoreTickerLine from '../data/nextLoreTickerLine';
 
 	const TEXT_PADDING = '                ';

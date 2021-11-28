@@ -17,7 +17,6 @@
 </style>
 
 <script>
-	import { currentStore } from '../stores';
 	import PoisonDisplay from './PoisonDisplay.svelte';
 	import ResourceBudgetDisplay from './ResourceBudgetDisplay.svelte';
 </script>

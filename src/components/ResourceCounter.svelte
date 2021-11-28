@@ -65,7 +65,7 @@
 		poisonPercent = resources.powerLevel > 0 ? (poisonAmount / resources.powerLevel) : (poisonAmount / gameStatus.startupAmount);
 		poisonClasses = classNames('counter-value', {
 			'counter-value-warning': poisonPercent >= 80 && poisonPercent < 100,
-			'counter-value-warning': poisonPercent >= 100,
+			'counter-value-danger': poisonPercent >= 100,
 		});
 	}
 </script>

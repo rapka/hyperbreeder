@@ -43,14 +43,13 @@
 	import OverviewTab from './OverviewTab.svelte';
 	import LoreTicker from './LoreTicker.svelte';
 	import { amDimension } from '../stores';
-	import { popupStatus } from '../stores/popupStatus';
 	import Popup from '../popup/Popup.svelte';
 
 	let selectedTab = 'MAIN';
 	let introDismissed = false;
 
 
-	let changeTab = (newTab, x, xx, xxx) => {
+	let changeTab = (newTab) => {
 		selectedTab = newTab;
 	};
 

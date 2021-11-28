@@ -64,8 +64,6 @@
 </style>
 
 <script>
-	import forEach from 'lodash/forEach';
-	import map from 'lodash/map';
 	import classNames from 'classnames';
 	import { currentStore } from '../stores';
 

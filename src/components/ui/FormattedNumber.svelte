@@ -15,7 +15,6 @@
 	import AnimatedNumber from './AnimatedNumber.svelte';
 	export let value = 1337;
 	export let onComplete = () => {};
-	let intervalTime = 30;
 	let displayValue = value;
 	let suffix = '';
 	let formatted = {};

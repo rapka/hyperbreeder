@@ -1,7 +1,4 @@
 <script>
-	import times from 'lodash/times';
-	import forEach from 'lodash/forEach';
-	import set from 'lodash/set';
 	import {
 		resources,
 		gameStatus,
@@ -25,7 +22,7 @@
 	const loop = () => {
 		setTimeout(loop, 500);
 
-		const simulateFastFission = (neutrons, factor) => {
+		const simulateFastFission = (neutrons) => {
 			return neutrons * $gameStatus.e;
 		};
 
@@ -33,19 +30,19 @@
 			return rbinom(neutrons, $gameStatus.pf);
 		};
 
-		const simulateResonanceEscape = (neutrons, factor) => {
+		const simulateResonanceEscape = (neutrons) => {
 			return rbinom(neutrons, $gameStatus.p);
 		};
 
-		const simulateThermalLeakage = (neutrons, factor) => {
+		const simulateThermalLeakage = (neutrons) => {
 			return rbinom(neutrons, $gameStatus.pt);
 		};
 
-		const simulateThermalUtilization = (neutrons, factor) => {
+		const simulateThermalUtilization = (neutrons) => {
 			return rbinom(neutrons, $gameStatus.f);
 		};
 
-		const simulateReproduction = (neutrons, factor) => {
+		const simulateReproduction = (neutrons) => {
 			return neutrons * $gameStatus.n;
 		};
 
@@ -82,8 +79,7 @@
 
 			// Nuclear decay
 			const lambda = LN_2 / gameStatus.wasteHalfLife;
-
-			resourcesObj.waste = resourcesObj.waste * Math.exp((LN_2 / $gameStatus.wasteHalfLife) * -1);
+			resourcesObj.waste = resourcesObj.waste * Math.exp(lambda * -1);
 
 			// Simulate iodine -> decay chain
 			resourcesObj.iodine = resourcesObj.iodine.map((poisonTick, index) => {
@@ -123,7 +119,7 @@
 
 				if (history.length === MAX_HISTORY) {
 					history = history.splice(1, MAX_HISTORY + 1);
-				};
+				}
 
 				return history;
 			});

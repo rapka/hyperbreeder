@@ -24,7 +24,6 @@
 
 <script>
 	import { decodeSave } from '../../data/saveManagement';
-	import { encodeSave } from '../../data/saveManagement';
 	import { upgradeStatus as amUpgradeStatus, saveGame as amSaveGame, resources as amResources } from '../../stores/antimatterStores';
 	import { upgradeStatus as mUpgradeStatus, saveGame as mSaveGame, resources as mResources } from '../../stores/matterStores';
 	import tutorialStatus from '../../stores/tutorialStores';

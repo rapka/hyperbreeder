@@ -17,7 +17,6 @@
 	import { saveGame as amSaveGame } from '../stores/antimatterStores';
 	import { amDimension } from '../stores';
 	import ControlRod from './ControlRod.svelte';
-	import forEach from 'lodash/forEach';
 
 	const togglemRod = (index) => {
 		// Update rod status

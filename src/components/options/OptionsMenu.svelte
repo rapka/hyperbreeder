@@ -108,8 +108,6 @@
 </style>
 
 <script>
-	import isEmpty from 'lodash/isEmpty';
-	import AnimatedText from '../ui/AnimatedText.svelte';
 	import ExpandButton from '../ui/ExpandButton.svelte';
 	import ImportSave from './ImportSave.svelte';
 	import ExportSave from './ExportSave.svelte';
@@ -118,7 +116,6 @@
 	let importExpanded = false;
 	let exportExpanded = false;
 
-	let descPlaying = false;
 	const toggleOpen = () => open = !open;
 	const toggleImport = () => importExpanded = !importExpanded;
 	const toggleExport = () => exportExpanded = !exportExpanded;

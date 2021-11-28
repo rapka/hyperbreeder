@@ -48,7 +48,7 @@ export const combinedStore = derived(
 		},
 		gameStatus: {
 			matter: $mGameStatus,
-			antimatter: $mGameStatus,
+			antimatter: $amGameStatus,
 		},
 		poisonAmount: {
 			matter: $mPoisonAmount,

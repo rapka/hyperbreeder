@@ -1,6 +1,3 @@
-import getDateFromTicks from '../components/logic/getDateFromTicks';
-import getYear from 'date-fns/getYear';
-
 export const encodeSave = (saveGame) => {
 	const base64 = window.btoa(JSON.stringify(saveGame));
 

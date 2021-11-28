@@ -58,8 +58,8 @@ export const unlockedUpgrades = derived([upgradeStatus], ([$upgrades]) => filter
 }).map(unlock => unlock.id));
 
 export const gameStatus = derived(
-	[upgradeStatus, saveGame, resources],
-	([$upgradeStatus, $saveGame, $resources]) => {
+	[upgradeStatus, saveGame],
+	([$upgradeStatus, $saveGame]) => {
 		let clonedSave = cloneDeep($saveGame);
 		forEach($upgradeStatus, upgrade => {
 			if (upgrade.purchased) {

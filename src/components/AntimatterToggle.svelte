@@ -26,7 +26,6 @@
 </style>
 
 <script>
-	import classNames from 'classnames';
 	import { amDimension } from '../stores';
 
 	let text;
@@ -40,6 +39,6 @@
 	}
 </script>
 
-<div class={`antimatterToggle${$amDimension ? ' active' : ''}`} on:click={() => onClick()}>
+<div class="antimatterToggle" class:active={$amDimension} on:click={() => onClick()}>
 	{text}
 </div>
