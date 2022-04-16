@@ -49,19 +49,19 @@
 			>
 				<rect
 					stroke="white"
+					fill="red"
+					x="10"
+					y={Y_OFFSET + MAX_HEIGHT - (($resources.energy / $energyBudget) * MAX_HEIGHT)}
+					width="200"
+					height={($resources.energy / $energyBudget) * MAX_HEIGHT}
+				/>
+				<rect
+					stroke="white"
 					fill="transparent"
 					x="10"
 					y={Y_OFFSET}
 					width="200"
 					height={MAX_HEIGHT}
-				/>
-				<rect
-					stroke="white"
-					fill="red"
-					x="10"
-					y={Y_OFFSET + MAX_HEIGHT - ($resources.energy / $energyBudget * MAX_HEIGHT)}
-					width="200"
-					height={$resources.energy / $energyBudget * MAX_HEIGHT}
 				/>
 			</svg>
 		</div>

@@ -1,0 +1,18 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"file_exclude_patterns":
+			[
+				"*.map",
+				"bundle.js",
+				"bundle.css"
+			],
+			"folder_exclude_patterns":
+			[
+				"out",
+			]
+		}
+	],
+}

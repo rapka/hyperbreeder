@@ -39,7 +39,7 @@ const DEFAULT_VALUES = {
 	xenonHalfLife: 8,
 	iodineHalfLife: 5,
 	meltdownCooldown: 20,
-	resourceBudgetBase: 1000,
+	resourceBudgetBase: 2000,
 	resourceBudgetGrowth: .01,
 	controlRods: [false, false, false, false, false, false, false, true, true, true],
 	lowerThresholds: [],
