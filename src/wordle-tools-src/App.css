@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.char {
+  color: white;
+  border: 1px solid white;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.char-black {
+  background-color: black;
+}
+
+.char-yellow {
+  background-color: #b59f3b;
+}
+
+.char-green {
+  background-color: #6aaa64;
+}
+
+.result-word {
+  display: inline-block;
+  padding: 4px 0;
+}
+
+.error-text {
+  color: #f5793a;
+}
