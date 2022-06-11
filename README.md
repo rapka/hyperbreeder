@@ -1,12 +1,10 @@
 # Hyperbreeder
 
-Hyperbreeder is an idle game. It's built using Electron and Svelte.
+Hyperbreeder is an idle game. It's built using Electron and Svelte. You can play it [here](https://rapka.github.io/hyperbreeder/)
 
-This repo is open source as development continues through alpha.
+This repo is open source as development continues through alpha, but this is subject to change.
 
-## To Use
-
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+## Local Development
 
 ```bash
 # Clone this repository
